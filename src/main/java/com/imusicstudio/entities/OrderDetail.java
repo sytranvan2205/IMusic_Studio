@@ -1,0 +1,55 @@
+package com.imusicstudio.entities;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "orderdetail")
+public class OrderDetail extends BaseEntity {
+
+	@Column(name = "detailquantity", nullable = false)
+	private int detailQuantity;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Order order;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Product product;
+
+	public OrderDetail() {
+		super();
+	}
+
+	public int getDetailQuantity() {
+		return detailQuantity;
+	}
+
+	public void setDetailQuantity(int detailQuantity) throws Exception {
+		if (detailQuantity <= product.getQuantity()) {
+			this.detailQuantity = detailQuantity;
+		} else {
+			throw new Exception("Amount of product not applied");
+		}
+
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+}
