@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
+<head th:replace="fragments :: header" >
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -24,24 +24,27 @@
 </head>
 
 <body>
+<div th:text="${title}"></div>
 
-    <div id="includecontent"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" 
-  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" 
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    $(function(){
-        $("#includecontent").load("header.html");
-    })
-  </script>
-  <div class="hero__item set-bg" data-setbg="img/hero/wp3206560.jpg">
-    <div  class="hero__text">
-        <!-- <span> FRUIT FRESH</span> -->
-        <h2>NHẠC CỤ HOÀN THIỆN 100% </h2>
-        <p>Nhanh tay sở hữu đi nào!</p>
-        <!-- <a href="#" class="primary-btn">MUA NGAY</a> -->
-    </div>
-</div>
+
+<!--    <div id="includecontent"></div>-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" -->
+<!--  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" -->
+<!--  crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--  <script>-->
+<!--    $(function(){-->
+<!--        $("#includecontent").load("header.html");-->
+<!--    })-->
+<!--  </script>-->
+<!--  <div class="hero__item set-bg" data-setbg="img/hero/wp3206560.jpg">-->
+<!--    <div  class="hero__text">-->
+<!--        &lt;!&ndash; <span> FRUIT FRESH</span> &ndash;&gt;-->
+<!--        <h2>NHẠC CỤ HOÀN THIỆN 100% </h2>-->
+<!--        <p>Nhanh tay sở hữu đi nào!</p>-->
+<!--        &lt;!&ndash; <a href="#" class="primary-btn">MUA NGAY</a> &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<div th:replace="fragments :: hero"></div>
 
 
     <section class="featured spad">
@@ -67,7 +70,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">
                     <div  class="featured__item">
                         <a href="shop-details.html" >
-                            <img class="featured__item__pic set-bg" src="../../../../../../../IMusic/img/guitar/cordoba-C1M-CE-01-450x471.jpg">
+                            <img class="featured__item__pic set-bg" src="img/guitar/cordoba-C1M-CE-01-450x471.jpg">
                            
                         </a>
                         
@@ -82,7 +85,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
                     <div class="featured__item">
                         <a href="shop-details.html" >
-                            <img class="featured__item__pic set-bg" src="../../../../../../../IMusic/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg">
+                            <img class="featured__item__pic set-bg" src="img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg">
                         </a>
                         
                         <div class="featured__item__text">
@@ -95,7 +98,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
                     <div class="featured__item">
                         <a href="shop-details.html" >
-                            <img class="featured__item__pic set-bg" src="../../../../../../../IMusic/img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg">
+                            <img class="featured__item__pic set-bg" src="img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg">
                         </a>
                         <div class="featured__item__text">
                             <h6><a href="shop-details.html">SUZUKI SDG-6NL</a></h6>
@@ -107,7 +110,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood organ">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png">
+                            <img class="featured__item__pic set-bg"  src="img/organ/dan_organ_casio_CT_S200_den_2-450x471.png">
                         </a>
                         <div class="featured__item__text">
                             <h6><a href="shop-details.html">CASIO CASIOTONE CT-S200</a></h6>
@@ -120,7 +123,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat organ">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/organ/Casiotone-CT-S410-450x471.jpg">
+                            <img class="featured__item__pic set-bg"  src="img/organ/Casiotone-CT-S410-450x471.jpg">
                         </a>
 
                         <div class="featured__item__text">
@@ -133,7 +136,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges organ">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg">
+                            <img class="featured__item__pic set-bg"  src="img/organ/dan-organ-casiotone-lk-s250-450x471.jpg">
                         </a>
                         
                         <div class="featured__item__text">
@@ -146,7 +149,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat piano">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg">
+                            <img class="featured__item__pic set-bg"  src="img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg">
                         </a>
 
                         <div class="featured__item__text">
@@ -159,7 +162,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/Ken/Full-Double-YHR-567.jpg">
+                            <img class="featured__item__pic set-bg"  src="img/Ken/Full-Double-YHR-567.jpg">
                         </a>
 
                         <div class="featured__item__text">
@@ -172,7 +175,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
                     <div class="featured__item">
                         <a href="shop-details.html"  >
-                            <img class="featured__item__pic set-bg"  src="../../../../../../../IMusic/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg">
+                            <img class="featured__item__pic set-bg"  src="img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg">
                         </a>
 
                         <div class="featured__item__text">
