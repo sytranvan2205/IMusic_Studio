@@ -2,6 +2,7 @@ package com.imusicstudio.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,9 +21,9 @@ public class User extends BaseEntity {
 	private String userName;
 	@Column(name = "password", nullable = false)
 	private String password;
-	@Column(name = "fullname", nullable = false, length = 80)
+	@Column(name = "fullname", length = 50)
 	private String fullName;
-	@Column(name = "useremail", nullable = false, unique = true, length = 80)
+	@Column(name = "useremail", nullable = false, unique = true, length = 50)
 	private String userEmail;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -31,9 +32,14 @@ public class User extends BaseEntity {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Order> orders = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user")
+	private Set<SecureToken> tokens;
 
 	@Column(name = "status", nullable = false)
 	private int status;
+	
+	private boolean accountVerified;
 
 	public User() {
 		super();
@@ -87,4 +93,28 @@ public class User extends BaseEntity {
 		this.roles = roles;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public boolean isAccountVerified() {
+		return accountVerified;
+	}
+
+	public void setAccountVerified(boolean accountVerified) {
+		this.accountVerified = accountVerified;
+	}
+
+	public Set<SecureToken> getTokens() {
+		return tokens;
+	}
+
+	public void setTokens(Set<SecureToken> tokens) {
+		this.tokens = tokens;
+	}
+	
 }

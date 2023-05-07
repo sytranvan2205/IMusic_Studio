@@ -29,11 +29,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (userEntity == null) {
 			throw new UsernameNotFoundException("User not found");
 		}
+		boolean enable = userEntity.isAccountVerified();
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		for (Role role : userEntity.getRoles()) {
 			authorities.add(new SimpleGrantedAuthority(role.getCode()));
 		}
-		MyUser user = new MyUser(userEntity.getUserName(), userEntity.getPassword(), true, true, true, true, authorities);
+		MyUser user = new MyUser(userEntity.getUserName(), userEntity.getPassword(), enable, true, true, true, authorities);
 		user.setFullName(userEntity.getFullName());
 		return user;
 	}

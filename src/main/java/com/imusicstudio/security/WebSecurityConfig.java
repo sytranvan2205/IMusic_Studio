@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordParameter("password")
 			.loginProcessingUrl("/j_spring_security_check")
 			.successHandler(authenticationSuccessHandler())
-			.failureUrl("/login?incorrectAccount")
+//			.failureUrl("/login?incorrectAccount")
 		.and()
 			.logout()
 			.deleteCookies("JSESSIONID")
