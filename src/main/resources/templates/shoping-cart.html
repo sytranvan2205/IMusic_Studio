@@ -1,40 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IMusic</title>
+<head th:replace="fragments::head_html">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
-      
-    <div id="includecontent"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" 
-    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      $(function(){
-          $("#includecontent").load("header.html");
-      })
-      
-    </script>
+<div th:replace="fragments::header" ></div>
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/pexels-pixabay-159355.jpg">
@@ -73,7 +45,7 @@
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="../../../../../../../IMusic/img/guitar/cordoba-C1M-CE-01-450x471.jpg" alt="" width="150" height="150">
+                                        <img th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}" alt="" width="150" height="150">
                                         <h5>Cordoba C1M CE</h5>
                                     </td>
                                     <td class="shoping__cart__price"> 1.000.000 VNĐ</td>
@@ -172,15 +144,7 @@
     </section>
     <!-- Shoping Cart Section End -->
 
-    <div id="includecontentfooter"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" 
-    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      $(function(){
-          $("#includecontentfooter").load("footer.html");
-      })
-    </script>
+<div th:replace="fragments::footer"></div>
 </body>
 
 </html>

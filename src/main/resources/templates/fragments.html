@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-
       xmlns:sec="https://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
-
-<head th:fragment="page_head(title,remove)" th:remove="${remove}" >
+<head th:fragment="head_html">
   <meta http-equiv="Content-Type" content="text/html">
     <meta charset="UTF-8">
+      <meta name="description" content="Ogani Template">
+      <meta name="keywords" content="Ogani, unica, creative, html">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>[[${title}]]</title>
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -22,16 +24,16 @@
 </head>
 <body>
   <div th:fragment="header" id="headerID">
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
+<!--    &lt;!&ndash; Page Preloder &ndash;&gt;-->
+<!--    <div id="preloder">-->
+<!--      <div class="loader"></div>-->
+<!--    </div>-->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
       <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><img th:src="@{/img/logo.png}" alt=""></a>
       </div>
       <div class="humberger__menu__cart">
         <ul>
@@ -42,7 +44,7 @@
       </div>
       <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-          <img src="img/language.png" alt="">
+          <img src="../static/img/language.png" alt="">
           <div>English</div>
           <span class="arrow_carrot-down"></span>
           <ul>
@@ -107,15 +109,7 @@
                   <a href="#"><i class="fa fa-linkedin"></i></a>
                   <a href="#"><i class="fa fa-pinterest-p"></i></a>
                 </div>
-                <!-- <div class="header__top__right__language">
-                    <img src="img/language.png" alt="">
-                    <div>English</div>
-                    <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li><a href="#">Spanis</a></li>
-                        <li><a href="#">English</a></li>
-                    </ul>
-                </div> -->
+
                 <div class="header__top__right__auth">
                   <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
                 </div>
@@ -128,15 +122,15 @@
         <div class="row">
           <div class="col-lg-2">
             <div class="header__logo">
-              <a href="index.html"><img src="img/logoIMusic.png" alt=""></a>
+              <a th:href="@{/home}"><img th:src="@{/img/logoIMusic.png}" alt=""></a>
             </div>
           </div>
           <div class="col-lg-7">
             <nav class="header__menu">
               <ul>
-                <li class="active"><a href="index.html">TRANG CHỦ</a></li>
-                <li><a href="shop-grid.html">SẢN PHẨM</a></li>
-                <li><a href="shoping-cart.html">THANH TOÁN</a>
+                <li class="active"><a th:href="@{/home}">TRANG CHỦ</a></li>
+                <li><a th:href="@{/shop-grid}">SẢN PHẨM</a></li>
+                <li><a th:href="@{/shoping-cart}">THANH TOÁN</a>
                   <!-- <ul class="header__menu__dropdown">
                       <li><a href="./shop-details.html">Shop Details</a></li>
                       <li><a href="./shoping-cart.html">Shoping Cart</a></li>
@@ -144,8 +138,8 @@
                       <li><a href="./blog-details.html">Blog Details</a></li>
                   </ul> -->
                 </li>
-                <li><a href="blog.html">TIN TỨC</a></li>
-                <li><a href="contact.html">LIÊN HỆ</a></li>
+                <li><a th:href="@{/blog}">TIN TỨC</a></li>
+                <li><a th:href="@{/contact}">LIÊN HỆ</a></li>
               </ul>
             </nav>
           </div>
@@ -153,7 +147,7 @@
             <div class="header__cart">
               <ul>
                 <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
-                <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a th:href="@{/shoping-cart}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
               </ul>
               <div class="header__cart__price">item: <span>$150.00</span></div>
             </div>
@@ -177,8 +171,8 @@
                 <span>Danh mục</span>
               </div>
               <ul>
-                <li><a class="hvr-underline-from-left" href="#">ĐÀN GUITAR</a></li>
-                <li><a class="" href="#">ĐÀN ORGAN</a></li>
+                <li><a href="#">ĐÀN GUITAR</a></li>
+                <li><a  href="#">ĐÀN ORGAN</a></li>
                 <li><a href="#">KÈN</a></li>
                 <li><a href="#">ĐÀN PIANO</a></li>
                 <li><a href="#">TRỐNG</a></li>
@@ -215,9 +209,12 @@
     </section>
     <!-- Hero Section End -->
 
-
   </div>
 
+
+
+
+<!--  HERO-->
 <div th:fragment="hero">
   <div class="hero__item set-bg" data-setbg="img/hero/wp3206560.jpg">
     <div  class="hero__text">
@@ -227,17 +224,231 @@
       <!-- <a href="#" class="primary-btn">MUA NGAY</a> -->
     </div>
   </div>
-
 </div>
 
 
+<!--  FEATURED-->
+
+  <div th:fragment="featured">
+    <section class="featured spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2>SẢN PHẨM NỔI BẬT</h2>
+            </div>
+            <div class="featured__controls">
+              <ul>
+                <li class="active" data-filter="*">Tất cả</li>
+                <li data-filter=".guitar">Guitar</li>
+                <li data-filter=".organ">Organ</li>
+                <li data-filter=".ken">Kèn</li>
+                <li data-filter=".piano">Piano</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row featured__filter">
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">
+            <div  class="featured__item">
+              <a th:href="@{/shop-details}" >
+                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">CORDOBA C1M-CE</a></h6>
+                <h5>6,980,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}" >
+                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">KAPOK D-118AC</a></h6>
+                <h5>2,200,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}" >
+                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg}">
+              </a>
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">SUZUKI SDG-6NL</a></h6>
+                <h5>2,500,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood organ">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}">
+              </a>
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">CASIO CASIOTONE CT-S200</a></h6>
+                <h5>3,500,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat organ">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/Casiotone-CT-S410-450x471.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">CASIOTONE CT-S410</a></h6>
+                <h5>6,300,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges organ">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">CASIO CASIOTONE LK-S250</a></h6>
+                <h5>5,200,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat piano">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">ROLAND RP-30</a></h6>
+                <h5>15,800,000 VNĐ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Full-Double-YHR-567.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">Full Double YHR-567</a></h6>
+                <h5>Liên hệ</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
+            <div class="featured__item">
+              <a th:href="@{/shop-details}"  >
+                <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6><a th:href="@{/shop-details}">Yamaha Alto Horn YAH-803S</a></h6>
+                <h5>Liên hệ</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 
 
 
 
+<!--  FOOTER-->
 
+  <div th:fragment="footer">
+    <footer class="footer spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer__about">
+              <div class="footer__about__logo">
+                <a th:href="@{/index}"><img th:src="@{/img/logoIMusic.png}" alt=""></a>
+              </div>
+              <ul>
+                <li>Address: 60-49 Road 11378 New York</li>
+                <li>Phone: +65 11.188.888</li>
+                <li>Email: hello@colorlib.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+            <div class="footer__widget">
+              <h6>Useful Links</h6>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Our Shop</a></li>
+                <li><a href="#">Secure Shopping</a></li>
+                <li><a href="#">Delivery infomation</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Our Sitemap</a></li>
+              </ul>
+              <ul>
+                <li><a href="#">Who We Are</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Innovation</a></li>
+                <li><a href="#">Testimonials</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="footer__widget">
+              <h6>Join Our Newsletter Now</h6>
+              <p>Get E-mail updates about our latest shop and special offers.</p>
+              <form action="#">
+                <input type="text" placeholder="Enter your mail">
+                <button type="submit" class="site-btn">Subscribe</button>
+              </form>
+              <div class="footer__widget__social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
 
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+  </div>
 
 
 </body>
