@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.User;
 public class MyUser extends User {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

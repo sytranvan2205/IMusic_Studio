@@ -3,10 +3,10 @@ package com.imusicstudio.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.imusicstudio.security.MyUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.imusicstudio.security.MyUser;
 
 public class SecurityUtils {
 	public static List<String> getAuthorities(){

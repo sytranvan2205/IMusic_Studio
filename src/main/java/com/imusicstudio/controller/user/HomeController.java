@@ -26,4 +26,28 @@ public class HomeController {
 	public ModelAndView accessDenied() {
 		return new ModelAndView("404");
 	}
+	@GetMapping("/shop-grid")
+	public String viewsShopGridPage() {
+		return "shop-grid";
+	}
+	@GetMapping("/shop-details")
+	public String viewsShopDetailsPage() {
+		return "shop-details";
+	}
+	@GetMapping("/shoping-cart")
+	public String viewsShopingCartPage() {
+		return "shoping-cart";
+	}
+	@GetMapping("/contact")
+	public String viewsContactPage() {
+		return "contact";
+	}
+	@GetMapping("/checkout")
+	public String viewsCheckoutPage() {
+		return "checkout";
+	}
+	@GetMapping("/blog")
+	public String viewsBlogPage() {
+		return "blog";
+	}
 }

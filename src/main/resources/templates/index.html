@@ -1,12 +1,470 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
+
+<head th:replace="fragments::head_html">
 </head>
+
 <body>
-    Hello world
+<div th:replace="fragments::header" ></div>
+<div th:replace="fragments::hero"></div>
+<div th:replace="fragments::featured"></div>
+<div th:replace="fragments::footer"></div>
+
+<!--    <div id="includecontent"></div>-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"-->
+<!--  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="-->
+<!--  crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--  <script>-->
+<!--    $(function(){-->
+<!--        $("#includecontent").load("header.html");-->
+<!--    })-->
+<!--  </script>-->
+
+
+
+
+<!--    <section class="featured spad">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="section-title">-->
+<!--                        <h2>SẢN PHẨM NỔI BẬT</h2>-->
+<!--                    </div>-->
+<!--                    <div class="featured__controls">-->
+<!--                        <ul>-->
+<!--                            <li class="active" data-filter="*">Tất cả</li>-->
+<!--                            <li data-filter=".guitar">Guitar</li>-->
+<!--                            <li data-filter=".organ">Organ</li>-->
+<!--                            <li data-filter=".ken">Kèn</li>-->
+<!--                            <li data-filter=".piano">Piano</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row featured__filter">-->
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">-->
+<!--                    <div  class="featured__item">-->
+<!--                        <a href="shop-details.html" >-->
+<!--                            <img class="featured__item__pic set-bg" th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}">-->
+<!--                           -->
+<!--                        </a>-->
+<!--                        -->
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">CORDOBA C1M-CE</a></h6>-->
+<!--                            <h5>6,980,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html" >-->
+<!--                            <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg}">-->
+<!--                        </a>-->
+<!--                        -->
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">KAPOK D-118AC</a></h6>-->
+<!--                            <h5>2,200,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html" >-->
+<!--                            <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg}">-->
+<!--                        </a>-->
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">SUZUKI SDG-6NL</a></h6>-->
+<!--                            <h5>2,500,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood organ">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}">-->
+<!--                        </a>-->
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">CASIO CASIOTONE CT-S200</a></h6>-->
+<!--                            <h5>3,500,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat organ">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/organ/Casiotone-CT-S410-450x471.jpg}">-->
+<!--                        </a>-->
+
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">CASIOTONE CT-S410</a></h6>-->
+<!--                            <h5>6,300,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                -->
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges organ">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg}">-->
+<!--                        </a>-->
+<!--                        -->
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">CASIO CASIOTONE LK-S250</a></h6>-->
+<!--                            <h5>5,200,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                -->
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat piano">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg}">-->
+<!--                        </a>-->
+
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">ROLAND RP-30</a></h6>-->
+<!--                            <h5>15,800,000 VNĐ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Full-Double-YHR-567.jpg}">-->
+<!--                        </a>-->
+
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">Full Double YHR-567</a></h6>-->
+<!--                            <h5>Liên hệ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">-->
+<!--                    <div class="featured__item">-->
+<!--                        <a href="shop-details.html"  >-->
+<!--                            <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg}">-->
+<!--                        </a>-->
+
+<!--                        <div class="featured__item__text">-->
+<!--                            <h6><a href="shop-details.html">Yamaha Alto Horn YAH-803S</a></h6>-->
+<!--                            <h5>Liên hệ</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+    <!-- Featured Section End -->
+
+    <!-- Banner Begin -->
+    <!-- <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Banner End -->
+
+    <!-- Latest Product Section Begin -->
+    <!-- <section class="latest-product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Sản phẩm gần đây</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Đánh giá cao</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Đã xem</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-2.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="img/latest-product/lp-3.jpg" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>Crab Pool Security</h6>
+                                        <span>$30.00</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Latest Product Section End -->
+
+    <!-- Blog Section Begin -->
+    <!-- <section class="from-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title from-blog__title">
+                        <h2>Thông tin thêm</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/top-dan-piano-gia-tot-cho-nguoi-moi-hoc-nam-2023-300x200.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Top đàn piano chất lượng cho người mới năm 2023</a></h5>
+                            <p>Giá cả là một trong những tiêu chí cần hàng đầu mà người dùng thường cân nhắc khi mua chiếc đàn piano đầu tiên</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/guitar-acoustic-hay-guitar-dien-tot-hon-cho-tre-em-3.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Guitar Acoustic hay Guitar Điện tốt hơn cho trẻ em?</a></h5>
+                            <p>Khi bạn tìm kiếm cây đàn guitar tốt nhất cho con mình, cả guitar acoustic và guitar điện đều có những ưu điểm và nhược điểm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-3.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Những gì cần chuẩn bị để học chơi trống</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Blog Section End -->
+
+
+   
+<!--    <div id="includecontentfooter"></div>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" -->
+<!--    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" -->
+<!--    crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--    <script>-->
+<!--      $(function(){-->
+<!--          $("#includecontentfooter").load("footer.html");-->
+<!--      })-->
+<!--    </script>-->
+
+
+
+
 </body>
+
 </html>
