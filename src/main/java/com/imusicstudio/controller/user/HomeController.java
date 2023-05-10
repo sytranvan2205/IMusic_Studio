@@ -45,4 +45,8 @@ public class HomeController {
 	public String viewsBlogPage() {
 		return "blog";
 	}
+	@GetMapping("/Admin")
+	public String viewsAdminPage() {
+		return "admin/fragments-Admin";
+	}
 }
