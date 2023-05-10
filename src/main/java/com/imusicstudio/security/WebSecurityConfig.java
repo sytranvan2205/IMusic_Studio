@@ -47,7 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.csrf().disable();
 		http.authorizeRequests()
-			.antMatchers("/admin**").hasAnyAuthority("ADMIN")
+			.antMatchers("/admin").hasAnyAuthority("ADMIN")
+			.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
 			.anyRequest().permitAll()
 		.and()
 			.exceptionHandling().accessDeniedPage("/accessDenied")
@@ -58,10 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordParameter("password")
 			.loginProcessingUrl("/j_spring_security_check")
 			.successHandler(authenticationSuccessHandler())
-//			.failureUrl("/login?incorrectAccount")
+			.failureUrl("/login?incorrectAccount")
 		.and()
 			.logout()
 			.deleteCookies("JSESSIONID")
+			.logoutSuccessUrl("/home")
 		.and()
 			.rememberMe()
 				.key("imusic-studio")

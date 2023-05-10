@@ -81,7 +81,7 @@
       </div>
       <div class="humberger__menu__contact">
         <ul>
-          <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+          <li><i class="fa fa-envelope"></i> imusicstudio4nvb@gmail.com</li>
           <li>Free Shipping for all Order of $99</li>
         </ul>
       </div>
@@ -96,7 +96,7 @@
             <div class="col-lg-6 col-md-6">
               <div class="header__top__left">
                 <ul>
-                  <li><i class="fa fa-envelope"></i>Imusicstudio@gmail.com</li>
+                  <li><i class="fa fa-envelope"></i>imusicstudio4nvb@gmail.com</li>
                   <!-- <li>Miễng phí giao hàng cho đơn hàng trên 2.000.000 VNĐ</li> -->
                 </ul>
               </div>
@@ -111,7 +111,8 @@
                 </div>
 
                 <div class="header__top__right__auth">
-                  <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+                  <a th:if="${myUser==null}" href="/login"><i class="fa fa-user"></i> Đăng nhập</a>
+                  <a th:if="${myUser!=null}" href="/logout" >[[${myUser.fullName}]]   <i class="fa fa-sign-out"></i></a>
                 </div>
               </div>
             </div>

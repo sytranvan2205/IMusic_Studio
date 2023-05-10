@@ -1,5 +1,11 @@
 package com.imusicstudio.controller.user;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,12 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.imusicstudio.dto.AccountCreateDTO;
+import com.imusicstudio.security.MyUser;
 
 @Controller
 public class HomeController {
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-	public ModelAndView getHomePage() {
+	public ModelAndView getHomePage(Authentication authentication) {
 		ModelAndView mv = new ModelAndView("index");
+		if(authentication == null) {
+			mv.addObject("myUser", null);
+			return mv;
+		}
+		MyUser myUser = (MyUser) authentication.getPrincipal();
+		mv.addObject("myUser", myUser);
 		return mv;
 	}
 	@GetMapping("/login")
@@ -49,5 +62,13 @@ public class HomeController {
 	@GetMapping("/blog")
 	public String viewsBlogPage() {
 		return "blog";
+	}
+	@RequestMapping(value = { "/logout" }, method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request,HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return new ModelAndView("redirect:/home");
 	}
 }
