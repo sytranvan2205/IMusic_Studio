@@ -18,10 +18,10 @@ import com.imusicstudio.security.MyUser;
 
 @Controller
 public class HomeController {
-	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public ModelAndView getHomePage(Authentication authentication) {
 		ModelAndView mv = new ModelAndView("index");
-		if(authentication == null) {
+		if (authentication == null) {
 			mv.addObject("myUser", null);
 			return mv;
 		}
@@ -29,44 +29,53 @@ public class HomeController {
 		mv.addObject("myUser", myUser);
 		return mv;
 	}
+
 	@GetMapping("/login")
 	public ModelAndView viewsLoginPage(AccountCreateDTO accountCreateDto, Model model) {
 		ModelAndView mv = new ModelAndView("login");
 		mv.addObject("accountCreateDto", new AccountCreateDTO());
 		return mv;
 	}
+
 	@RequestMapping(value = { "/accessDenied" }, method = RequestMethod.GET)
 	public ModelAndView accessDenied() {
 		return new ModelAndView("404");
 	}
+
 	@GetMapping("/shop-grid")
 	public String viewsShopGridPage() {
 		return "shop-grid";
 	}
+
 	@GetMapping("/shop-details")
 	public String viewsShopDetailsPage() {
 		return "shop-details";
 	}
+
 	@GetMapping("/shoping-cart")
 	public String viewsShopingCartPage() {
 		return "shoping-cart";
 	}
+
 	@GetMapping("/contact")
 	public String viewsContactPage() {
 		return "contact";
 	}
+
 	@GetMapping("/checkout")
 	public String viewsCheckoutPage() {
 		return "checkout";
 	}
+
 	@GetMapping("/blog")
 	public String viewsBlogPage() {
 		return "blog";
 	}
+
 	@RequestMapping(value = { "/logout" }, method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request,HttpServletResponse response) {
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if(auth!=null) {
+		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
 		return new ModelAndView("redirect:/home");
