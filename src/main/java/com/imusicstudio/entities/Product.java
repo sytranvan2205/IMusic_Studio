@@ -19,10 +19,10 @@ public class Product extends BaseEntity {
 	@Column(name = "product_img", nullable = false)
 	private String productImage;
 	@Column(name = "product_price", nullable = false)
-	private float productPrice;
+	private Long productPrice;
 	@Column(name = "product_stock", nullable = false)
 	private int quantity;
-	@Column(name = "product_desc", nullable = false)
+	@Column(name = "product_desc", nullable = false, length = 700)
 	private String productDesc;
 	@Column(name = "status", nullable = false)
 	private int statusSell;
@@ -53,12 +53,12 @@ public class Product extends BaseEntity {
 		this.productImage = productImage;
 	}
 
-	public float getProductPrice() {
+	public Long getProductPrice() {
 		return productPrice;
 	}
 
-	public void setProductPrice(float productPrince) {
-		this.productPrice = productPrince;
+	public void setProductPrice(Long productPrice) {
+		this.productPrice = productPrice;
 	}
 
 	public int getQuantity() {

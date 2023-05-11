@@ -1,5 +1,8 @@
 package com.imusicstudio.controller.user;
 
+import com.imusicstudio.entities.Category;
+import com.imusicstudio.service.serviceImpl.CategoryServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.imusicstudio.dto.AccountCreateDTO;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
+	@Autowired
+	private CategoryServiceImpl categoryService;
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public ModelAndView getHomePage() {
+		List<Category> categories = categoryService.getAllCategory();
 		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("categories", categories);
 		return mv;
 	}
 	@GetMapping("/login")

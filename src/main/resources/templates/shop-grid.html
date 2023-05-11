@@ -34,15 +34,13 @@
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Sản phẩm</h4>
-                            <ul>
-                                <li><a href="#">ĐÀN GUITAR</a></li>
-                                <li><a href="#">ĐÀN ORGAN</a></li>
-                                <li><a href="#">KÈN</a></li>
-                                <li><a href="#">ĐÀN PIANO</a></li>
-                                <li><a href="#">TRỐNG</a></li>
-                                <li><a href="#">HARMONICA</a></li>
-                                <li><a href="#">PHỤ KIỆN</a></li>
-                            </ul>
+                            <div th:fragment="category">
+                                <ul >
+                                    <li th:each="category : ${categories}">
+                                        <a th:href="@{/products/{categoryId}(categoryId=${category.id})}" th:text="${category.categoryName}"></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <!-- <div class="sidebar__item">
                             <h4>Giá</h4>
@@ -129,64 +127,28 @@
                         </div> -->
                         <div class="sidebar__item">
                             <div class="latest-product__text">
-                                <h4>Đã xem gần đây</h4>
-                                <div class="latest-product__slider owl-carousel">
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
+                                <h4>Các sản phẩm mới nhất</h4>
+                                <div class="latest-product__slider owl-carousel" >
+                                    <div class="latest-product__slider__item" >
+                                        <a href="#" class="latest-product__item" th:each="product : ${productsNew1}">
                                             <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}" >
+                                                <img th:src="${product.productImage}" >
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg}" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/organ/Casiotone-CT-S410-450x471.jpg}" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>
+                                                <h6 th:text="${product.productName}"></h6>
+                                                <span th:text="${product.productPrice}"> vnd</span>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
+                                    <div class="latest-product__slider__item" >
+                                        <a href="#" class="latest-product__item" th:each="product : ${productsNew2}">
                                             <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg}" alt="">
+                                                <img th:src="${product.productImage}" >
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>
+                                                <h6 th:text="${product.productName}"></h6>
+                                                <span th:text="${product.productPrice}"> vnd</span>
                                             </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg}" alt="" >
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img th:src="@{/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>1.000.000 VNĐ</span>   
-                                             </div>
                                         </a>
                                     </div>
                                 </div>
@@ -319,7 +281,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
+                                    <h6><span th:text="${products.size()}"></span> Products found</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -331,169 +293,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
+                        <div class="col-lg-4 col-md-6 col-sm-6" th:each="product : ${products}">
+                            <div class="card mb-4 shadow-sm" >
                                 <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"  th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}">
+                                    <img class="product__item__pic set-bg"  th:src="${product.productImage}">
 
                                 </a>
                                 <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg}">
-                                </a>
-
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/organ/Casiotone-CT-S410-450x471.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/Ken/Full-Double-YHR-567.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/Ken/Euphoniums-YEP-211_small.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Euphoniums YEP 211</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/Ken/Baritone-YBH-301M_small.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Baritone YBH 301M</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-
-                                <a th:href="@{/shop-details}" >
-                                    <img class="product__item__pic set-bg"
-                                         th:src="@{/img/Ken/Tenor-Saxophone_1_small.jpg}">
-                                </a>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Tenor Saxophone</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h6><a href="#" th:text="${product.productName}"></a></h6>
+                                    <h5 th:text="${product.productPrice}" ></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
+                        <div class="product__pagination  ">
+                                <a th:class="${currentPage == 1 ? 'disabled' : ''}"  th:href="@{${url}(page=${currentPage - 1}, name=${key})}"><i class="fa fa-long-arrow-left"></i></a>
+                                <a th:class="${pageNumber == currentPage ? 'active' : ''}" th:href="@{${url}(page=${pageNumber}, name=${key})}" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:text="${pageNumber}"></a>
+                                <a  th:class="${currentPage == totalPages ? 'disabled' : ''}" th:href="@{${url}(page=${currentPage + 1}, name=${key})}"><i class="fa fa-long-arrow-right"></i></a>
+
+                        </div>
                 </div>
             </div>
         </div>

@@ -129,7 +129,7 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a th:href="@{/home}">TRANG CHỦ</a></li>
-                <li><a th:href="@{/shop-grid}">SẢN PHẨM</a></li>
+                <li><a th:href="@{/products}">SẢN PHẨM</a></li>
                 <li><a th:href="@{/shoping-cart}">THANH TOÁN</a>
                   <!-- <ul class="header__menu__dropdown">
                       <li><a href="./shop-details.html">Shop Details</a></li>
@@ -165,31 +165,29 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
-            <div class="hero__categories">
-              <div class="hero__categories__all">
-                <i class="fa fa-bars"></i>
-                <span>Danh mục</span>
+            <div class="hero__categories" >
+              <div class="hero__categories__all" >
+                <i class="fa fa-bars" ></i>
+                <span >Danh mục</span>
               </div>
-              <ul>
-                <li><a href="#">ĐÀN GUITAR</a></li>
-                <li><a  href="#">ĐÀN ORGAN</a></li>
-                <li><a href="#">KÈN</a></li>
-                <li><a href="#">ĐÀN PIANO</a></li>
-                <li><a href="#">TRỐNG</a></li>
-                <li><a href="#">HARMONICA</a></li>
-                <li><a href="#">PHỤ KIỆN</a></li>
-              </ul>
+              <div >
+                <ul >
+                  <li th:each="category : ${categories}">
+                    <a th:href="@{/products/{categoryId}(categoryId=${category.id})}" th:text="${category.categoryName}"></a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="col-lg-9">
             <div class="hero__search">
               <div class="hero__search__form">
-                <form action="#">
+                <form action="/products/search" method="get">
                   <!-- <div class="hero__search__categories">
                       All Categories
                       <span class="arrow_carrot-down"></span>
                   </div> -->
-                  <input type="text" placeholder="Nhập sản phẩm bạn cần tìm">
+                  <input type="text" name="name" placeholder="Nhập sản phẩm bạn cần tìm">
                   <button type="submit" class="site-btn">TÌM KIẾM</button>
                 </form>
               </div>
