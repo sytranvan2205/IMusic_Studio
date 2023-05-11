@@ -3,17 +3,15 @@ package com.imusicstudio.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "category")
 public class Category extends BaseEntity {
+
 	@Column(name = "category_name")
 	private String categoryName;
+
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Product> products = new ArrayList<>();
@@ -21,6 +19,12 @@ public class Category extends BaseEntity {
 	public Category() {
 		super();
 	}
+
+	public Category(String categoryName) {
+		this.categoryName = categoryName;
+
+	}
+
 
 	public String getCategoryName() {
 		return categoryName;
