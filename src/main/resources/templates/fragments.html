@@ -250,8 +250,8 @@
           </div>
         </div>
 
-        <div class="row featured__filter" th:each="product : ${products}">
-          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">
+        <div class="row featured__filter" >
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar" th:each="product : ${products}">
             <div  class="featured__item">
               <a th:href="@{/shop-details}" >
                 <img class="featured__item__pic set-bg" th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}">
@@ -259,12 +259,10 @@
 
               <div class="featured__item__text">
                 <h6><a th:href="@{/shop-details}">CORDOBA C1M-CE</a></h6>
-                <h5>00000</h5>
+                <h5>555500000</h5>
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </section>

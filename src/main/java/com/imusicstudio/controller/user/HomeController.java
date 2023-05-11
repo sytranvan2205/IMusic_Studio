@@ -32,17 +32,15 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("index");
 		if(authentication == null) {
 			mv.addObject("myUser", null);
+			List<Product> products = productService.getAllProduct();
+			System.out.println("-----");
+			mv.addObject("products", products);
 			return mv;
 		}
 		MyUser myUser = (MyUser) authentication.getPrincipal();
-		List<Product> products = new ArrayList<>();
-			products= productService.getAllProduct();
-		for (Product product:
-				products) {
-			System.out.println(product.getProductName().toString());
-		}
-		mv.addObject("myUser", myUser);
+		List<Product> products = productService.getAllProduct();
 		mv.addObject("products", products);
+		mv.addObject("myUser", myUser);
 		return mv;
 
 	}
