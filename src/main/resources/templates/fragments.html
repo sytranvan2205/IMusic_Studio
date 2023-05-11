@@ -250,7 +250,7 @@
           </div>
         </div>
 
-        <div class="row featured__filter">
+        <div class="row featured__filter" th:each="product : ${products}">
           <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">
             <div  class="featured__item">
               <a th:href="@{/shop-details}" >
@@ -259,114 +259,12 @@
 
               <div class="featured__item__text">
                 <h6><a th:href="@{/shop-details}">CORDOBA C1M-CE</a></h6>
-                <h5>6,980,000 VNĐ</h5>
+                <h5>00000</h5>
               </div>
             </div>
           </div>
 
 
-          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}" >
-                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">KAPOK D-118AC</a></h6>
-                <h5>2,200,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables guitar">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}" >
-                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/Suzuki-SDG-6NL-1-270x270-450x471.jpg}">
-              </a>
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">SUZUKI SDG-6NL</a></h6>
-                <h5>2,500,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood organ">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}">
-              </a>
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">CASIO CASIOTONE CT-S200</a></h6>
-                <h5>3,500,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat organ">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/Casiotone-CT-S410-450x471.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">CASIOTONE CT-S410</a></h6>
-                <h5>6,300,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges organ">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/organ/dan-organ-casiotone-lk-s250-450x471.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">CASIO CASIOTONE LK-S250</a></h6>
-                <h5>5,200,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat piano">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">ROLAND RP-30</a></h6>
-                <h5>15,800,000 VNĐ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Full-Double-YHR-567.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">Full Double YHR-567</a></h6>
-                <h5>Liên hệ</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ken">
-            <div class="featured__item">
-              <a th:href="@{/shop-details}"  >
-                <img class="featured__item__pic set-bg"  th:src="@{/img/Ken/Yamaha-Alto-Horn-YAH-803S.jpg}">
-              </a>
-
-              <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">Yamaha Alto Horn YAH-803S</a></h6>
-                <h5>Liên hệ</h5>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,9 @@ package com.imusicstudio.controller.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.imusicstudio.entities.Product;
+import com.imusicstudio.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -16,18 +19,32 @@ import org.springframework.web.servlet.ModelAndView;
 import com.imusicstudio.dto.AccountCreateDTO;
 import com.imusicstudio.security.MyUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class HomeController {
+	@Autowired
+	ProductService productService;
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public ModelAndView getHomePage(Authentication authentication) {
+
 		ModelAndView mv = new ModelAndView("index");
 		if(authentication == null) {
 			mv.addObject("myUser", null);
 			return mv;
 		}
 		MyUser myUser = (MyUser) authentication.getPrincipal();
+		List<Product> products = new ArrayList<>();
+			products= productService.getAllProduct();
+		for (Product product:
+				products) {
+			System.out.println(product.getProductName().toString());
+		}
 		mv.addObject("myUser", myUser);
+		mv.addObject("products", products);
 		return mv;
+
 	}
 	@GetMapping("/login")
 	public ModelAndView viewsLoginPage(AccountCreateDTO accountCreateDto, Model model) {
