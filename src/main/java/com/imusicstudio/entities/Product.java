@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "product")
 public class Product extends BaseEntity {
@@ -31,7 +32,9 @@ public class Product extends BaseEntity {
 	@OneToOne(mappedBy = "product", targetEntity = CartItem.class, fetch = FetchType.EAGER)
 	private CartItem cartItem;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
 	private Category category;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
