@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +27,9 @@ public class Product extends BaseEntity {
 	private String productDesc;
 	@Column(name = "status", nullable = false)
 	private int statusSell;
+	
+	@OneToOne(mappedBy = "product", targetEntity = CartItem.class, fetch = FetchType.EAGER)
+	private CartItem cartItem;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Category category;
@@ -101,4 +105,12 @@ public class Product extends BaseEntity {
 		this.orderDetails = orderDetails;
 	}
 
+	public CartItem getCartItem() {
+		return cartItem;
+	}
+
+	public void setCartItem(CartItem cartItem) {
+		this.cartItem = cartItem;
+	}
+	
 }

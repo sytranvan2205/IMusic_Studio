@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -41,6 +42,9 @@ public class User extends BaseEntity {
 	
 	private boolean accountVerified;
 
+	@OneToOne(mappedBy = "user")
+	private Cart cart;
+	
 	public User() {
 		super();
 	}
@@ -115,6 +119,14 @@ public class User extends BaseEntity {
 
 	public void setTokens(Set<SecureToken> tokens) {
 		this.tokens = tokens;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	
 }
