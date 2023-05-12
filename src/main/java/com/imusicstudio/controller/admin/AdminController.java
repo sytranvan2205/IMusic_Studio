@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdminController {
-	@GetMapping("/testadmin")
+	@GetMapping("/admin")
 	public String viewsAdminPage() {
 		return "admin/adminindex";
 	}

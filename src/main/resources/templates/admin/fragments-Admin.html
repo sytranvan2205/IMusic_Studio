@@ -10,45 +10,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 
-    <link rel="stylesheet" th:href="@{/admin/css/crud.css}"/>
-    <script type="text/javascript" th:src="@{/admin/js/crud.js}"></script>
+    <link rel="stylesheet" th:href="@{/adminpage/css/crud.css}"/>
+    <script type="text/javascript" th:src="@{/adminpage/js/crud.js}"></script>
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" th:href="@{/admin/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/admin/font-awesome/4.2.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/adminpage/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/adminpage/font-awesome/4.2.0/css/font-awesome.min.css}" />
 
     <!-- page specific plugin styles -->
 
     <!-- text fonts -->
-    <link rel="stylesheet" th:href="@{/admin/fonts/fonts.googleapis.com.css}" />
+    <link rel="stylesheet" th:href="@{/adminpage/fonts/fonts.googleapis.com.css}" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" th:href="@{/admin/css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" th:href="@{/adminpage/css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" th:href="@{/admin/css/ace-part2.min.css}" class="ace-main-stylesheet" />
+    <link rel="stylesheet" th:href="@{/adminpage/css/ace-part2.min.css}" class="ace-main-stylesheet" />
     <![endif]-->
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" th:href="@{/admin/css/ace-ie.min.css}" />
+    <link rel="stylesheet" th:href="@{/adminpage/css/ace-ie.min.css}" />
     <![endif]-->
 
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
-    <script th:src="@{/admin/js/ace-extra.min.js}"></script>
+    <script th:src="@{/adminpage/js/ace-extra.min.js}"></script>
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
     <!--[if lte IE 8]>
-    <script th:src="@{/admin/js/html5shiv.min.js}"></script>
-    <script th:src="@{/admin/js/respond.min.js}"></script>
+    <script th:src="@{/adminpage/js/html5shiv.min.js}"></script>
+    <script th:src="@{/adminpage/js/respond.min.js}"></script>
     <![endif]-->
 </head>
 
 <body class="no-skin">
 <div th:fragment="navb">
-<div id="navbar" class="navbar navbar-default">
+<div th:fragment="header" id="navbar" class="navbar navbar-default">
     <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
     </script>
@@ -78,12 +78,12 @@
     </div><!-- /.navbar-container -->
 </div>
 
-        <div class="main-container" id="main-container">
+        <div th:fragment="main-container" class="main-container" id="main-container">
          <script type="text/javascript">
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
             </script>
 
-            <div id="sidebar" class="sidebar                  responsive">
+            <div th:fragment="sidebar" id="sidebar" class="sidebar                  responsive">
         <script type="text/javascript">
             try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
         </script>
@@ -542,7 +542,7 @@
     </div>
 
     <div class="main-content">
-        <div class="main-content-inner">
+        <div th:fragment="main-content-inner" class="main-content-inner">
             <div class="breadcrumbs" id="breadcrumbs">
                 <script type="text/javascript">
                     try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
@@ -629,52 +629,7 @@
                                                 <!--chỉnh sửa phần này-->
 
 
-   <div th:fragment="tableProduct">
-
-                <div class="modal-content" id="servers_modal">
-                    <div class="modal-header">
-                        <div class="table-wrapper">
-                            <div class="table-title">
-                                <button type="button" class="btn btn-primary add-new ">
-                                    <i class="fa fa-plus"></i> Thêm mới</button>
-                            </div>
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Loại sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Mô tả</th>
-                                    <th>Giá tiền</th>
-                                    <th>Số lượng</th>
-                                    <th>Chức năng</th>
-                                </tr>
-                                </thead>
-                                <tbody id="servers_table" runat="server" ClientIDMode="static" data-delete="">
-                                <tr id="server_0">
-                                    <td>Đàn guitar</td>
-                                    <td>Guitar</td>
-                                    <td>Blah</td>
-                                    <td>Dùng cho người mới tập chơi</td>
-                                    <td>1.000.000 VNĐ</td>
-                                    <td >1</td>
-                                    <td class="crud">
-                                        <a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-check"></i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <div class="modal-footer">
-                            <!-- <button type="button" class="btn btn-default" onclick="SaveServerList();">Save</button> -->
-                            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> -->
-                        </div>
-                    </div>
-                </div>
-
-</div>
+   
 
 
 
@@ -719,49 +674,49 @@
 <!-- basic scripts -->
 </div>
 
-
+<div th:fragment="script">
 <!--[if !IE]> -->
-<script th:src="@{/admin/js/jquery.2.1.1.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.2.1.1.min.js}"></script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
-<script th:src="@{/admin/js/jquery.1.11.1.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.1.11.1.min.js}"></script>
 <![endif]-->
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script th:src='@{/admin/js/jquery.min.js}'>"+"<"+"/script>");
+    window.jQuery || document.write("<script th:src='@{/adminpage/js/jquery.min.js}'>"+"<"+"/script>");
 </script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script th:src='@{/admin/js/jquery1x.min.js}'>"+"<"+"/script>");
+    window.jQuery || document.write("<script th:src='@{/adminpage/js/jquery1x.min.js}'>"+"<"+"/script>");
 </script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script th:src='@{/admin/js/jquery.mobile.custom.min.js}'>"+"<"+"/script>");
+    if('ontouchstart' in document.documentElement) document.write("<script th:src='@{/adminpage/js/jquery.mobile.custom.min.js}'>"+"<"+"/script>");
 </script>
-<script th:src="@{/admin/js/bootstrap.min.js}"></script>
+<script th:src="@{/adminpage/js/bootstrap.min.js}"></script>
 
 <!-- page specific plugin scripts -->
 
 <!--[if lte IE 8]>
-<script th:src="@{/admin/js/excanvas.min.js}"></script>
+<script th:src="@{/adminpage/js/excanvas.min.js}"></script>
 <![endif]-->
-<script th:src="@{/admin/js/jquery-ui.custom.min.js}"></script>
-<script th:src="@{/admin/js/jquery.ui.touch-punch.min.js}"></script>
-<script th:src="@{/admin/js/jquery.easypiechart.min.js}"></script>
-<script th:src="@{/admin/js/jquery.sparkline.min.js}"></script>
-<script th:src="@{/admin/js/jquery.flot.min.js}"></script>
-<script th:src="@{/admin/js/jquery.flot.pie.min.js}"></script>
-<script th:src="@{/admin/js/jquery.flot.resize.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery-ui.custom.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.ui.touch-punch.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.easypiechart.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.sparkline.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.flot.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.flot.pie.min.js}"></script>
+<script th:src="@{/adminpage/js/jquery.flot.resize.min.js}"></script>
 
 <!-- ace scripts -->
-<script th:src="@{/admin/js/ace-elements.min.js}"></script>
-<script th:src="@{/admin/js/ace.min.js}"></script>
+<script th:src="@{/adminpage/js/ace-elements.min.js}"></script>
+<script th:src="@{/adminpage/js/ace.min.js}"></script>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
@@ -981,6 +936,7 @@
 
     })
 </script>
+</div>
 </div>
 
 </body>
