@@ -1,21 +1,24 @@
 package com.imusicstudio.service;
 
-import com.imusicstudio.entities.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+
+import com.imusicstudio.entities.Product;
+
 public interface ProductsService {
-    Page<Product> getNameProductFromSearch(String nameproduct, int page);
+    Page<Product> getNameProductFromSearch(String nameproduct, int page, Sort sort);
+
     void save(Product product);
 
 
-    Page<Product> findAll(int page);
+    Page<Product> findAll(int page, Sort sort);
 
     List<Product> getProductsByStatus(int status);
     List<Product> get6NewsestProduct();
 
 
-    Page<Product>  getProductsByCategory(long category, int page);
+
+    Page<Product>  getProductsByCategory(long category, int page, Sort sort);
 }

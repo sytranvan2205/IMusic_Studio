@@ -1,8 +1,11 @@
 package com.imusicstudio.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,13 +17,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.imusicstudio.dto.AccountCreateDTO;
+import com.imusicstudio.entities.Category;
 import com.imusicstudio.security.MyUser;
+import com.imusicstudio.service.serviceImpl.CategoryServiceImpl;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private CategoryServiceImpl categoryService;
+	
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public ModelAndView getHomePage(Authentication authentication) {
 		ModelAndView mv = new ModelAndView("index");
+		List<Category> categories = categoryService.getAllCategory();
+		mv.addObject("categories", categories);
 		if (authentication == null) {
 			mv.addObject("myUser", null);
 			return mv;

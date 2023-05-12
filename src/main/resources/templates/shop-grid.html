@@ -273,10 +273,14 @@
                             <div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
                                     <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
+                                     <select id="sortSelect" onchange="changeSort()">
+                                        <option value="name_asc" th:selected="${sort_option == 'name_asc'}">Tăng dần theo tên</option>
+                                        <option value="name_desc" th:selected="${sort_option == 'name_desc'}">Giảm dần theo tên</option>
+                                        <option value="price_asc" th:selected="${sort_option == 'price_asc'}">Tăng dần theo giá</option>
+                                        <option value="price_desc" th:selected="${sort_option == 'price_desc'}">Giảm dần theo giá</option>
                                     </select>
+                                    <input type="hidden" id="currentPage" th:value="${currentPage}"/>
+                                    <input type="hidden" id="key" th:value="${key}"/>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
@@ -306,10 +310,10 @@
                             </div>
                         </div>
                     </div>
-                        <div class="product__pagination  ">
-                                <a th:class="${currentPage == 1 ? 'disabled' : ''}"  th:href="@{${url}(page=${currentPage - 1}, name=${key})}"><i class="fa fa-long-arrow-left"></i></a>
-                                <a th:class="${pageNumber == currentPage ? 'active' : ''}" th:href="@{${url}(page=${pageNumber}, name=${key})}" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:text="${pageNumber}"></a>
-                                <a  th:class="${currentPage == totalPages ? 'disabled' : ''}" th:href="@{${url}(page=${currentPage + 1}, name=${key})}"><i class="fa fa-long-arrow-right"></i></a>
+                         <div class="product__pagination  ">
+                                <a th:class="${currentPage == 1 ? 'disabled' : ''}"  th:href="@{${url}(page=${currentPage - 1}, name=${key}, sort=${sort_option})}"><i class="fa fa-long-arrow-left"></i></a>
+                                <a th:class="${pageNumber == currentPage ? 'active' : ''}" th:href="@{${url}(page=${pageNumber}, name=${key}, sort=${sort_option})}" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:text="${pageNumber}"></a>
+                                <a  th:class="${currentPage == totalPages ? 'disabled' : ''}" th:href="@{${url}(page=${currentPage + 1}, name=${key}, sort=${sort_option})}"><i class="fa fa-long-arrow-right"></i></a>
 
                         </div>
                 </div>
