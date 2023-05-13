@@ -15,6 +15,8 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
@@ -23,6 +25,7 @@ public abstract class BaseEntity {
 	private Long id;
 	@Column(name = "createddate")
 	@CreatedDate
+	@JsonFormat(pattern="dd-MM-yyyy",timezone = "dd-MM-yyyy")
 	private Date createdDate;
 	@Column(name = "createby")
 	@CreatedBy

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+	<div th:replace="admin/fragments-Admin::header"></div>
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<div th:replace="admin/fragments-Admin::sidebar"></div>
+		<div class="main-content">
+			<div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+
+
+			<!-- Sửa ở đây -->
+			<div th:fragment="tableProduct">
+				<form th:action="@{/admin/order} " th:o id="formSubmit" method="get">
+					<div class="modal-content" id="servers_modal">
+						<div class="modal-header">
+							<div class="table-wrapper">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Mã hóa đơn</th>
+											<th>Ngày tạo hóa đơn</th>
+											<th>Tên người nhận</th>
+											<th>Địa chỉ giao hàng</th>
+											<th>Tình trạng giao hàng</th>
+											<th>Chức năng</th>
+										</tr>
+									</thead>
+									<tbody id="servers_table">
+										<th:block th:each="order : ${page.content}">
+											<tr id="server_0">
+												<td>[[${order.id}]]</td>
+												<td>[[${order.createdDate}]]</td>
+												<td>[[${order.getUser().fullName}]]</td>
+												<td>[[${order.shipAdress}]]</td>
+												<td>Chưa giao hàng</td>
+												<td class="crud"><a class="add" title="Check"
+													data-toggle="tooltip"><i class="fa fa-search"></i></a> <a th:href="@{/admin/order/update-shiped/{id}(id=${order.id})}"
+													title="Update trạng thái giao hàng" data-toggle="tooltip"><i
+														class="fa fa-pencil"></i></a> <a th:href="@{/admin/order-detail/{id}(id=${order.id})}"
+													title="Xem chi tiết đơn hàng" data-toggle="tooltip"><i
+														class="fa fa-search"></i></a></td>
+											</tr>
+										</th:block>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination" style="margin: 0px">
+										<!-- <a th:href="@{/admin/order?p=${page.totalPages-1}}"></a> -->
+										<li class="page-item"><a class="page-link"
+											href="/admin/order?p=0">First</a></li>
+										<li class="page-item"><a class="page-link"
+											th:href="@{/admin/order(p=${page.number-1})}">Previous</a></li>
+										<li class="page-item"><a class="page-link"
+											th:href="@{/admin/order(p=${page.number+1})}">Next</a></li>
+										<li class="page-item"><a class="page-link"
+											th:href="@{/admin/order(p=${page.totalPages-1})}">Last</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Kết thúc sửa ở đây -->
+		</div>
+		<div th:replace="admin/fragments-Admin::footer"></div>
+	</div>
+	<div th:replace="admin/fragments-Admin::script"></div>
+	<!--  	<script>
+		var totalPages = 100;
+		var currentPage = 1;
+		var limit = 10
+		$(function() {
+			window.pagObj = $('#pagination').twbsPagination({
+				totalPages : 100,
+				visiblePages : 10,
+				startPage : 2,
+				onPageClick : function(event, page) {
+					if (currentPage != page) {
+						$('#limit').val(limit);
+						$('#page').val(page);
+						$('#formSubmit').submit();
+					}
+				}
+			});
+		});
+	</script> -->
+	<script th:src="@{/adminpage/js/jquery.twbsPagination.js}"></script>
+	<script th:src="@{/adminpage/js/jquery.twbsPagination.min.js}"></script>
+</body>
+</html>

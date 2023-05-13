@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+	<div th:replace="admin/fragments-Admin::header"></div>
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<div th:replace="admin/fragments-Admin::sidebar"></div>
+		<div class="main-content">
+			<div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+
+
+			<!-- Sửa ở đây -->
+			<div th:fragment="tableProduct">
+				<form th:action="@{/admin/order} " th:o id="formSubmit" method="get">
+					<div class="modal-content" id="servers_modal">
+						<div class="modal-header">
+							<div class="table-wrapper">
+								<div class="table-title">
+									<a th:href="@{/admin/order}">
+										<button type="button" class="btn btn-primary">
+											<i class="fa fa-backward"></i> Trở về trang quản lý order
+										</button>
+									</a>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Tên sản phẩm</th>
+											<th>Đơn giá</th>
+											<th>Số lượng</th>
+											<th>Thành tiền</th>
+										</tr>
+									</thead>
+									<tbody id="servers_table">
+										<th:block th:each="orderDetail : ${orderDetails}">
+											<tr id="server_0">
+												<td>[[${orderDetail.getProduct().productName}]]</td>
+												<td>[[${orderDetail.getProduct().productPrice}]]</td>
+												<td>[[${orderDetail.detailQuantity}]]</td>
+												<td>[[${orderDetail.getProduct().productPrice*orderDetail.detailQuantity}]]
+													VNĐ</td>
+												<td></td>
+											</tr>
+										</th:block>
+										<tr id="server_0">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Tổng tiền: [[${totalPrice}]] VNĐ</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Kết thúc sửa ở đây -->
+		</div>
+		<div th:replace="admin/fragments-Admin::footer"></div>
+	</div>
+	<div th:replace="admin/fragments-Admin::script"></div>
+	<!--  	<script>
+		var totalPages = 100;
+		var currentPage = 1;
+		var limit = 10
+		$(function() {
+			window.pagObj = $('#pagination').twbsPagination({
+				totalPages : 100,
+				visiblePages : 10,
+				startPage : 2,
+				onPageClick : function(event, page) {
+					if (currentPage != page) {
+						$('#limit').val(limit);
+						$('#page').val(page);
+						$('#formSubmit').submit();
+					}
+				}
+			});
+		});
+	</script> -->
+	<script th:src="@{/adminpage/js/jquery.twbsPagination.js}"></script>
+	<script th:src="@{/adminpage/js/jquery.twbsPagination.min.js}"></script>
+</body>
+</html>

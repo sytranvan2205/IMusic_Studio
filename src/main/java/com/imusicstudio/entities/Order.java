@@ -24,8 +24,14 @@ public class Order extends BaseEntity {
 	@Column(name = "orderdate")
 	private Date orderDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
+	
+	@Column(name="is_shiped")
+	private int isShiped;
+	
+	@Column(name="status")
+	private int status;
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderDetail> orderDetails = new ArrayList<>();
@@ -73,5 +79,23 @@ public class Order extends BaseEntity {
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+
+	public int getIsShiped() {
+		return isShiped;
+	}
+
+	public void setIsShiped(int isShiped) {
+		this.isShiped = isShiped;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
+	
 
 }

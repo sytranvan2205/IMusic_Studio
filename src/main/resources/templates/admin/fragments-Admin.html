@@ -37,6 +37,7 @@
 
     <!-- ace settings handler -->
     <script th:src="@{/adminpage/js/ace-extra.min.js}"></script>
+    <script th:src="@{/adminpage/js/jquery.twbsPagination.js}"></script>
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -170,7 +171,7 @@
                     </li>
 
                     <li class="">
-                        <a href="buttons.html">
+                        <a th:href="@{/admin/order}">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Quản lý đơn hàng
                         </a>

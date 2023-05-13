@@ -13,10 +13,10 @@ public class OrderDetail extends BaseEntity {
 	@Column(name = "detailquantity", nullable = false)
 	private int detailQuantity;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Order order;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Product product;
 
 	public OrderDetail() {
