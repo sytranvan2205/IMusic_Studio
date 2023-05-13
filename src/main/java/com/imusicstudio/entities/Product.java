@@ -22,7 +22,7 @@ public class Product extends BaseEntity {
 	private float productPrice;
 	@Column(name = "product_stock", nullable = false)
 	private int quantity;
-	@Column(name = "product_desc", nullable = false)
+	@Column(name = "product_desc", nullable = false, length = 700)
 	private String productDesc;
 	@Column(name = "status", nullable = false)
 	private int statusSell;

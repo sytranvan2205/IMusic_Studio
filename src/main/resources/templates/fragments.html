@@ -240,11 +240,16 @@
             </div>
             <div class="featured__controls">
               <ul>
-                <li class="active" data-filter="*">Tất cả</li>
-                <li data-filter=".guitar">Guitar</li>
-                <li data-filter=".organ">Organ</li>
-                <li data-filter=".ken">Kèn</li>
-                <li data-filter=".piano">Piano</li>
+
+                <a th:href="@{/home}" ><li class="active mr-2" data-filter="*">Tất cả</li> </a>
+                <a class="mr-2" href="" th:each="category : ${categories}" th:href="@{/home/category/{id}(id=${category.id})}">
+                  <li data-filter="*" th:text="${category.categoryName}"></li>
+                </a>
+<!--                <li data-filter=".guitar">Guitar</li>-->
+<!--                <li data-filter=".organ">Organ</li>-->
+<!--&lt;!&ndash;                <li data-filter=".ken">Kèn</li>&ndash;&gt;-->
+<!--                <li><a th:href="@{/home/category/003}">KÈN</a></li>-->
+<!--                <li data-filter=".piano">Piano</li>-->
               </ul>
             </div>
           </div>
@@ -254,12 +259,12 @@
           <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar" th:each="product : ${products}">
             <div  class="featured__item">
               <a th:href="@{/shop-details}" >
-                <img class="featured__item__pic set-bg" th:src="@{/img/guitar/cordoba-C1M-CE-01-450x471.jpg}">
+                <img class="featured__item__pic set-bg"  th:src="${product.productImage}">
               </a>
 
               <div class="featured__item__text">
-                <h6><a th:href="@{/shop-details}">CORDOBA C1M-CE</a></h6>
-                <h5>555500000</h5>
+                <h6 th:text="${product.productName}"><a th:href="@{/shop-details}"></a></h6>
+                <h5 th:text="${product.productPrice}">VND</h5>
               </div>
             </div>
           </div>

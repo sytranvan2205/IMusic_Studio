@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 public interface ProductService {
-    List<Product> getAllProductByCategoryId(int id);
+    List<Product> getAllProductByCategoryId(long id);
 
     Optional<Product> getProductById(long id);
 
@@ -17,7 +17,6 @@ public interface ProductService {
     void updateProduct(Product product);
 
     List<Product> getAllProduct();
-
 
 
 }

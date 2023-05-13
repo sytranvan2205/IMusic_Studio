@@ -4,7 +4,6 @@ import com.imusicstudio.entities.Product;
 import com.imusicstudio.repository.ProductsRepository;
 import com.imusicstudio.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     }//search theo id
 
     @Override
-    public List<Product> getAllProductByCategoryId(int id) {
+    public List<Product> getAllProductByCategoryId(long id) {
         return productRepository.findAllByCategory_Id(id);
     }
     //findList theo ProductDTO.categoryId
