@@ -7,6 +7,10 @@ import java.util.List;
 public interface CategoryService {
 	
     List<Category> getAllCategory();
+
+
+
+    Category getCategoryById(Long categoryId);
 //    List<Category> findAll();
 //    Category save(Category category);
 //    Category getById(Long id);

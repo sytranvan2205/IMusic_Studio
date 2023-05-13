@@ -13,7 +13,17 @@ public interface ProductsService {
     void save(Product product);
 
 
+    void update(Product product);
+
+    void delete(Long id);
+
+
+
     Page<Product> findAll(int page, Sort sort);
+
+    Product findById(Long id);
+
+    List<Product> getAllProduct();
 
     List<Product> getProductsByStatus(int status);
     List<Product> get6NewsestProduct();

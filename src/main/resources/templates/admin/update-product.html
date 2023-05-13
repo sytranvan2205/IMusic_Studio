@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+  </script>
+  <div th:replace="admin/fragments-Admin::sidebar"></div>
+  <div class="main-content">
+    <div th:replace="admin/fragments-Admin::main-content-inner"></div>
+    <form method="post" th:action="@{/update-product}" th:object="${product}"  enctype="multipart/form-data">
+      <input type="hidden" id="id_update" th:field="${product.id}" />
+      <div class="form-group">
+        <label for="productName">Product Name:</label>
+        <input type="text" class="form-control" id="productName" name="name" required th:value="${product.productName}">
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Price:</label>
+        <input type="number" class="form-control" id="productPrice" name="price" min="0" required th:value="${product.productPrice}">
+      </div>
+      <div class="form-group">
+        <label for="productDesc">Description:</label>
+        <textarea class="form-control" id="productDesc" name="description" th:text="${product.productDesc}" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Quantity:</label>
+        <input type="number" class="form-control" id="productQuantity" name="quantity" th:value="${product.quantity}" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Category:</label>
+        <select class="form-control" id="productCategory" name="category" required>
+          <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}" th:selected="${category.id == product.category.id}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="productImage">Product Image:</label>
+        <input type="file" class="form-control-file" id="productImage" name="image" required>
+      </div>
+        <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
+    </form>
+
+
+  </div>
+</div>
+<div th:replace="admin/fragments-Admin::footer"></div>
+</div>
+<div th:replace="admin/fragments-Admin::script"></div>
+
+<!-- <div th:replace="admin/fragments-Admin::navb">
+	<div th:replace="admin/fragments-Admin::header"></div>
+	<div th:replace="admin/fragments-Admin::main-container">
+		<div th:replace="admin/fragments-Admin::sidebar"></div>
+		<div th:replace="admin/fragments-Admin::main-content">
+		</div>
+		<div th:replace="admin/fragments-Admin::footer"></div>
+	</div>
+
+</div> -->
+<!-- <div th:replace="admin/fragments-Admin::navb"></div> -->
+<!-- <div th:replace="admin/fragments-Admin::footer"></div> -->
+</body>
+</html>
