@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+    try { ace.settings.check('main-container', 'fixed'); } catch (e) {}
+  </script>
+  <div th:replace="admin/fragments-Admin::sidebar"></div>
+  <div class="main-content">
+    <div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+    <form th:action="@{/admintest/category/edit}" th:object="${category}" method="post">
+      <input type="hidden" th:if="${category.id}" th:field="*{id}" />
+      <div class="form-row">
+        <div class="col">
+          <label for="categoryName">Loại sản phẩm:</label>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="categoryName" th:field="*{categoryName}" required>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+<div th:replace="admin/fragments-Admin::footer"></div>
+<div th:replace="admin/fragments-Admin::script"></div>
+</body>
+</html>

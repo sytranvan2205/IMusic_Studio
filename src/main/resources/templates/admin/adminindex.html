@@ -2,85 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin/fragments-Admin::head"></head>
 <body class="no-skin">
-	<div th:replace="admin/fragments-Admin::header"></div>
-	<div class="main-container" id="main-container">
-		         <script type="text/javascript">
-        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-            </script>
-            <div th:replace="admin/fragments-Admin::sidebar"></div>
-            <div class="main-content">
-            	<div th:replace="admin/fragments-Admin::main-content-inner"></div>
-            	
-            	
-            	
-            	<!-- Sửa ở đây -->
-            	<div th:fragment="tableProduct">
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+	<script type="text/javascript">
+		try { ace.settings.check('main-container', 'fixed'); } catch (e) {}
+	</script>
+	<div th:replace="admin/fragments-Admin::sidebar"></div>
+	<div class="main-content">
+		<div th:replace="admin/fragments-Admin::main-content-inner"></div>
 
-                 <div class="modal-content" id="servers_modal">
-                    <div class="modal-header">
-                        <div class="table-wrapper">
-                            <div class="table-title">
-                                <button type="button" class="btn btn-primary add-new ">
-                                    <i class="fa fa-plus"></i> Thêm mới</button>
-                            </div>
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Loại sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Mô tả</th>
-                                    <th>Giá tiền</th>
-                                    <th>Số lượng</th>
-                                    <th>Chức năng</th>
-                                </tr>
-                                </thead>
-                                <tbody id="servers_table" runat="server" ClientIDMode="static" data-delete="">
-                                <tr id="server_0">
-                                    <td>Đàn guitar</td>
-                                    <td>Guitar</td>
-                                    <td>Blah</td>
-                                    <td>Dùng cho người mới tập chơi</td>
-                                    <td>1.000.000 VNĐ</td>
-                                    <td >1</td>
-                                    <td class="crud">
-                                        <a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-check"></i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" onclick="SaveServerList();">Save</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                        </div>
-                    </div>
-                </div> 
-				<!-- Kết thúc sửa ở đây -->
-				
-				
-				
-				
-				
-				</div>
-            </div>
-            <div th:replace="admin/fragments-Admin::footer"></div>
-	</div>
-	<div th:replace="admin/fragments-Admin::script"></div>
-
-<!-- <div th:replace="admin/fragments-Admin::navb">
-	<div th:replace="admin/fragments-Admin::header"></div>
-	<div th:replace="admin/fragments-Admin::main-container">
-		<div th:replace="admin/fragments-Admin::sidebar"></div>
-		<div th:replace="admin/fragments-Admin::main-content">
+		<!-- Sửa ở đây -->
+		<div th:fragment="tableProduct">
+			<a th:href="@{/admintest/category}" class="dropdown-toggle">
+				<i class="menu-icon fa fa-caret-right"></i> Loại sản phẩm
+			</a>
+			<b class="arrow"></b>
 		</div>
-		<div th:replace="admin/fragments-Admin::footer"></div>
+		<!-- Kết thúc sửa ở đây -->
+
 	</div>
-	
-</div> -->
-<!-- <div th:replace="admin/fragments-Admin::navb"></div> -->
-<!-- <div th:replace="admin/fragments-Admin::footer"></div> -->
+</div>
+<div th:replace="admin/fragments-Admin::footer"></div>
+<div th:replace="admin/fragments-Admin::script"></div>
 </body>
 </html>
