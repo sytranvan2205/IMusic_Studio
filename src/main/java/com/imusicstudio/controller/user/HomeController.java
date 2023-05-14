@@ -29,7 +29,7 @@ public class HomeController {
 	public String viewsShopDetailsPage() {
 		return "shop-details";
 	}
-	@GetMapping("/shoping-cart")
+	@GetMapping("/add-to-cart")
 	public String viewsShopingCartPage() {
 		return "shoping-cart";
 	}

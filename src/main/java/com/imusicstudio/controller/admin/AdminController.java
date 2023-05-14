@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
-	@GetMapping("/testadmin")
+	@GetMapping("/admin")
 	public String viewsAdminPage() {
 		return "admin/adminindex";
 	}
