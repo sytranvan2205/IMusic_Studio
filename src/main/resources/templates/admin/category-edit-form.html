@@ -11,7 +11,7 @@
   <div class="main-content">
     <div th:replace="admin/fragments-Admin::main-content-inner"></div>
 
-    <form th:action="@{/admintest/category/edit}" th:object="${category}" method="post">
+    <form th:action="@{/admintest/category/edit/{id}(id=${category.id})}" th:object="${category}" method="post">
       <input type="hidden" th:if="${category.id}" th:field="*{id}" />
       <div class="form-row">
         <div class="col">

@@ -61,11 +61,26 @@ public class CategoryController {
         return "admin/category-edit-form";
     }
 
-    @PostMapping("/edit")
-    public String editCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+
+
+
+
+
+
+    @PostMapping("/edit/{id}")
+    public String editCategory(@PathVariable Long id, @Valid @ModelAttribute("category") Category updatedCategory, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "admin/category-form";
+            return "admin/category-edit-form";
         }
+
+        Category category = categoryService.getCategoryById(id);
+        if (category == null) {
+            //lỗi không tìm thấy
+            return "admin/category-not-found";
+        }
+
+        category.setCategoryName(updatedCategory.getCategoryName());
 
         try {
             categoryService.updateCategory(category);
@@ -78,6 +93,24 @@ public class CategoryController {
 
         return "redirect:/admintest/category";
     }
+
+//    @PostMapping("/edit")
+//    public String editCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+//        if (bindingResult.hasErrors()) {
+//            return "admin/category-edit-form";
+//        }
+//
+//        try {
+//            categoryService.updateCategory(category);
+//            redirectAttributes.addFlashAttribute("success", "Category updated successfully");
+//        } catch (DataIntegrityViolationException e) {
+//            redirectAttributes.addFlashAttribute("failed", "Failed to update category due to duplicate name");
+//        } catch (Exception e) {
+//            redirectAttributes.addFlashAttribute("failed", "Error: " + e.getMessage());
+//        }
+//
+//        return "redirect:/admintest/category";
+//    }
 
     @GetMapping("/delete/{id}")
     public String deleteCategory(@PathVariable Long id, RedirectAttributes redirectAttributes) {
