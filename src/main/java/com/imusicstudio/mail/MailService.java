@@ -34,7 +34,7 @@ public class MailService {
 //        String html = templateEngine.process("verify-code", context);
 
         helper.setTo(mail.getTo());
-        helper.setText(mail.getModel().get("token").toString());
+        helper.setText("Mã xác nhận của bạn là: "+mail.getModel().get("token").toString());
 //        helper.setText(html, true);
         helper.setSubject(mail.getSubject());
         helper.setFrom(mail.getFrom());

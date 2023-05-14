@@ -91,4 +91,15 @@ public class UserServiceImpl implements IUserService {
 		account.setAccountVerified(true);
 		update(account);
 	}
+	
+    @Override
+    public User saveInfor(User user) {
+        return null;
+    }
+
+	@Override
+    public User findByUserName(String username) {
+        return userRepository.findUserByUserName(username) ;
+
+    }
 }

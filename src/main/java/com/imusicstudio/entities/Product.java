@@ -24,19 +24,14 @@ public class Product extends BaseEntity {
 	private Long productPrice;
 	@Column(name = "product_stock", nullable = false)
 	private int quantity;
-	@Column(name = "product_desc", nullable = false, length = 700)
+	@Column(name = "product_desc", nullable = false,length = 700)
 	private String productDesc;
 	@Column(name = "status", nullable = false)
 	private int statusSell;
-	
 	@OneToOne(mappedBy = "product", targetEntity = CartItem.class, fetch = FetchType.EAGER)
 	private CartItem cartItem;
-
-
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-
 	private Category category;
-
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderDetail> orderDetails = new ArrayList<>();
 

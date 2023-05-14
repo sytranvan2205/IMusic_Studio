@@ -80,22 +80,35 @@ public class HomeController {
 	}
 
 	@GetMapping("/shop-grid")
-	public String viewsShopGridPage() {
+	public String viewsShopGridPage(Model model,Authentication authentication) {
+		if(authentication !=null) {
+			MyUser myUser = (MyUser) authentication.getPrincipal();
+			model.addAttribute("myUser", myUser);
+		}
 		return "shop-grid";
 	}
 
 	@GetMapping("/shop-details")
-	public String viewsShopDetailsPage() {
+	public String viewsShopDetailsPage(Model model,Authentication authentication) {
+		if(authentication !=null) {
+			MyUser myUser = (MyUser) authentication.getPrincipal();
+			model.addAttribute("myUser", myUser);
+		}
 		return "shop-details";
 	}
 
-	@GetMapping("/shoping-cart")
+//	@GetMapping("/shoping-cart")
+	@GetMapping("/add-to-cart")
 	public String viewsShopingCartPage() {
 		return "shoping-cart";
 	}
 
 	@GetMapping("/contact")
-	public String viewsContactPage() {
+	public String viewsContactPage(Model model,Authentication authentication) {
+		if(authentication !=null) {
+			MyUser myUser = (MyUser) authentication.getPrincipal();
+			model.addAttribute("myUser", myUser);
+		}
 		return "contact";
 	}
 

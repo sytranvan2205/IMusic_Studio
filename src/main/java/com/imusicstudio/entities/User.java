@@ -1,6 +1,7 @@
 package com.imusicstudio.entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -26,25 +27,34 @@ public class User extends BaseEntity {
 	private String fullName;
 	@Column(name = "useremail", nullable = false, unique = true, length = 50)
 	private String userEmail;
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
+	@OneToOne(mappedBy = "user")
+	private ShoppingCart shoppingCart;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles = new ArrayList<>();
+	private Collection<Role> roles;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Order> orders = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "user")
 	private Set<SecureToken> tokens;
 
 	@Column(name = "status", nullable = false)
 	private int status;
-	
+
 	private boolean accountVerified;
+
+//	@OneToMany(mappedBy = "user")
+//	private Set<SecureToken> tokens;
+//	private boolean accountVerified;
 
 	@OneToOne(mappedBy = "user")
 	private Cart cart;
-	
+
 	public User() {
 		super();
 	}
@@ -89,8 +99,8 @@ public class User extends BaseEntity {
 		this.status = status;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
 	}
 
 	public void setRoles(List<Role> roles) {
@@ -128,5 +138,9 @@ public class User extends BaseEntity {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
 }

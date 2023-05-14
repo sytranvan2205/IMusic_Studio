@@ -37,7 +37,7 @@
       </div>
       <div class="humberger__menu__cart">
         <ul>
-          <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+          <li><a th:href="@{/shoping-cart}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
         </ul>
         <div class="header__cart__price">item: <span>$150.00</span></div>
       </div>
@@ -238,9 +238,16 @@
           </div>
         </div>
 
+<<<<<<< HEAD
         <div class="row featured__filter" >
           <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar" th:each="product : ${products}">
             <div  class="featured__item">
+=======
+        <div class="row featured__filter">
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar">
+<!--            thử nghiệm-->
+            <div th:action="@{/add-to-cart}" th:method="post" class="featured__item">
+>>>>>>> 0d83db8366c5dce65ee5570b3575b3406f31a3fc
               <a th:href="@{/shop-details}" >
                 <img class="featured__item__pic set-bg"  th:src="${product.productImage}">
               </a>
