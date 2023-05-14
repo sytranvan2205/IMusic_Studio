@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+    try { ace.settings.check('main-container', 'fixed'); } catch (e) {}
+  </script>
+  <div th:replace="admin/fragments-Admin::sidebar"></div>
+  <div class="main-content">
+    <div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+    <!-- Sửa ở đây -->
+
+<!--    <div th:fragment="tableProduct">-->
+
+<!--      <div class="modal-content" id="servers_modal">-->
+<!--        <div class="modal-header">-->
+<!--          <div class="table-wrapper">-->
+<!--            <div class="table-title">-->
+<!--              <button type="button" class="btn btn-primary add-new ">-->
+<!--                <i class="fa fa-plus"></i> Thêm mới</button>-->
+<!--            </div>-->
+<!--            <table class="table table-bordered">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th>Loại sản phẩm</th>-->
+
+<!--                <th>Chức năng</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody id="servers_table" runat="server" ClientIDMode="static" data-delete="">-->
+<!--              <tr id="server_0">-->
+<!--                <td>Đàn guitar</td>-->
+
+<!--                <td class="crud">-->
+<!--                  <a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-check"></i></a>-->
+<!--                  <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>-->
+<!--                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+
+    <!-- Sửa ở đây -->
+
+    <div th:fragment="tableProduct">
+
+      <div class="modal-content" id="servers_modal">
+        <div class="modal-header">
+          <div class="table-wrapper">
+<!--            <div class="table-title">-->
+<!--              <i class="fa fa-plus"></i> Thêm mới</button>-->
+<!--            </div>-->
+            <div class="table-title">
+              <a class="add" title="Add" data-toggle="tooltip" href="/admintest/category/add">
+                <i class="fa fa-plus"></i> Thêm mới
+              </a>
+            </div>
+
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>Loại sản phẩm</th>
+                <th>Chức năng</th>
+              </tr>
+              </thead>
+              <tbody id="servers_table" runat="server" ClientIDMode="static" data-delete="">
+              <tr th:each="category : ${categories}">
+                <td th:text="${category.categoryName}"></td>
+                <td class="crud">
+                  <a class="add" title="Add" data-toggle="tooltip" href="/admintest/category/add"><i class="fa fa-check"></i></a>
+<!--                  <a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-check"></i></a>-->
+                    <a class="edit" title="Edit" data-toggle="tooltip" th:href="@{/admintest/category/edit/{id}(id=${category.id})}"><i class="fa fa-pencil"></i></a>
+
+                    <!--                  <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>-->
+                  <a class="delete" title="Delete" data-toggle="tooltip" th:href="@{/admintest/category/delete/{id}(id=${category.id})}"><i class="fa fa-trash"></i></a>
+
+                  <!--                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kết thúc sửa ở đây -->
+
+
+
+    <!-- Kết thúc sửa ở đây -->
+
+  </div>
+</div>
+<div th:replace="admin/fragments-Admin::footer"></div>
+<div th:replace="admin/fragments-Admin::script"></div>
+</body>
+</html>

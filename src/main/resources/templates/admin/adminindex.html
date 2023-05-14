@@ -67,7 +67,6 @@
 				</div>
             </div>
             <div th:replace="admin/fragments-Admin::footer"></div>
-	</div>
 	<div th:replace="admin/fragments-Admin::script"></div>
 
 <!-- <div th:replace="admin/fragments-Admin::navb">
@@ -75,12 +74,22 @@
 	<div th:replace="admin/fragments-Admin::main-container">
 		<div th:replace="admin/fragments-Admin::sidebar"></div>
 		<div th:replace="admin/fragments-Admin::main-content">
-		</div>
-		<div th:replace="admin/fragments-Admin::footer"></div>
-	</div>
-	
-</div> -->
-<!-- <div th:replace="admin/fragments-Admin::navb"></div> -->
-<!-- <div th:replace="admin/fragments-Admin::footer"></div> -->
+=======
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+	<script type="text/javascript">
+		try { ace.settings.check('main-container', 'fixed'); } catch (e) {}
+	</script>
+	<div th:replace="admin/fragments-Admin::sidebar"></div>
+	<div class="main-content">
+		<div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+		<!-- Sửa ở đây -->
+		
+		<!-- Kết thúc sửa ở đây -->
+
+
+<div th:replace="admin/fragments-Admin::footer"></div>
+<div th:replace="admin/fragments-Admin::script"></div>
 </body>
 </html>
