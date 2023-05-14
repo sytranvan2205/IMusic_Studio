@@ -10,15 +10,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.imusicstudio.entities.Product;
-import com.imusicstudio.repository.ProductsRepository;
+import com.imusicstudio.repository.ProductRepository;
 import com.imusicstudio.service.ProductsService;
 
 @Service
 public class ProductServiceImpl implements ProductsService{
 
-	private final ProductsRepository productRepository;
+	private ProductRepository productRepository;
+	
 	@Autowired
-	public ProductServiceImpl(ProductsRepository productRepository) {
+	public ProductServiceImpl(ProductRepository productRepository) {
 		this.productRepository = productRepository;
 	}
 
@@ -59,5 +60,10 @@ public class ProductServiceImpl implements ProductsService{
 		Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
 		return productRepository.findByCategoryId(category, pageable);
 	}
+
+	@Override
+    public Product getProductById(long id) {
+        return productRepository.findById(id);
+    }
 
 }

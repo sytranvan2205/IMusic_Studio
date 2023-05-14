@@ -109,4 +109,15 @@ public class ProductController {
 	        model.addAttribute("sort_option", sortOption);
 	        return "shop-grid";
 	    }
+	    
+	    @GetMapping("/shop-details/{id}")
+	    public String getProductById(@PathVariable long id, Model model) {
+	        Product product = productService.getProductById(id);
+	        if (product ==null) {
+	            model.addAttribute("errorMessage","Sản phẩm không tồn tại");
+	        return "404";
+	        }
+	        model.addAttribute("product", product);
+	        return "shop-details";
+	    }
 }

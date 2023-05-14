@@ -18,7 +18,7 @@ public interface ProductsService {
     List<Product> getProductsByStatus(int status);
     List<Product> get6NewsestProduct();
 
-
+    public Product getProductById(long id);
 
     Page<Product>  getProductsByCategory(long category, int page, Sort sort);
 }
