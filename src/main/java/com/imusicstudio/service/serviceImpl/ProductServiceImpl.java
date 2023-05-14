@@ -38,10 +38,29 @@ public class ProductServiceImpl implements ProductsService {
 	}
 
 	@Override
+	public void update(Product product) {
+		productRepository.updateproduct(product.getId(), product.getProductName(), product.getProductPrice(),
+				product.getProductDesc(), product.getCategory().getId(), product.getStatusSell(), product.getQuantity(),
+				product.getProductImage());
+
+	}
+
+	@Override
+	public void delete(Long id) {
+		productRepository.deleteById(id);
+
+	}
+
+	@Override
 	public Page<Product> findAll(int page, Sort sort) {
 		int pageSize = 9; // Number of products per page
 		Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
 		return productRepository.findAll(pageable);
+	}
+
+	@Override
+	public Product findById(Long id) {
+		return productRepository.getById(id);
 	}
 
 	@Override
@@ -60,8 +79,6 @@ public class ProductServiceImpl implements ProductsService {
 		Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
 		return productRepository.findByCategoryId(category, pageable);
 	}
-
-
 
 	@Override
 	public List<Product> getAllProduct() {
@@ -88,7 +105,5 @@ public class ProductServiceImpl implements ProductsService {
 	public List<Product> getAllProductByCategoryId(long id) {
 		return productRepository.findAllByCategory_Id(id);
 	}
-
-
 
 }

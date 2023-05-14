@@ -10,6 +10,14 @@ import com.imusicstudio.entities.Category;
 
 public interface CategoryService {
     List<Category> getAllCategory();
+    
+    Category getCategoryById(Long categoryId);
+//    List<Category> findAll();
+//    Category save(Category category);
+//    Category getById(Long id);
+//    Category update(Category category);
+//    void deleteById(Long id);
+//    void enableById(Long id);
 
     public void updateCategory(Category category);
 
@@ -17,7 +25,6 @@ public interface CategoryService {
 
     public Optional<Category> getCategoryById(int id);
 
-    Category getCategoryById(Long id);
     void saveCategory(Category category);
 
     void deleteCategory(Long id);

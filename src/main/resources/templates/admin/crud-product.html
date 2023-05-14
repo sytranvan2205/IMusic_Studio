@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments-Admin::head"></head>
+<body class="no-skin">
+<div th:replace="admin/fragments-Admin::header"></div>
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+  </script>
+  <div th:replace="admin/fragments-Admin::sidebar"></div>
+  <div class="main-content">
+    <div th:replace="admin/fragments-Admin::main-content-inner"></div>
+
+
+
+    <!-- Sửa ở đây -->
+    <div th:fragment="tableProduct">
+      <div class="modal-content" id="servers_modal">
+        <div class="modal-header">
+          <div class="table-wrapper">
+            <div class="table-title">
+              <button type="button" class="btn btn-primary " >
+                <i class="fa fa-plus"></i> <a class="text-white" th:href="@{/add-product}">Thêm mới</a></button>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>Loại sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Mô tả</th>
+                <th>Giá tiền</th>
+                <th>Số lượng</th>
+                <th>Chức năng</th>
+              </tr>
+              </thead>
+              <tbody id="servers_table" runat="server" ClientIDMode="static" data-delete="">
+              <tr id="server_0" th:each="product, index: ${products}">
+                <td th:text="${product.category.categoryName}"></td>
+                <td th:text="${product.productName}"></td>
+                <td><img style="height: 100px; width: 100px" th:src="${product.productImage}"></td>
+                <td th:text="${product.productDesc}"></td>
+                <td ><span th:text="${product.productPrice}"/> VNĐ</td>
+                <td th:text="${product.quantity}" ></td>
+                <td class="crud">
+                  <button  title="Edit" data-toggle="tooltip" ><a class="fa fa-edit" th:href="@{/update-product/{productid}(productid=${product.id})}"></a></button>
+                  <button  title="Delete" data-toggle="tooltip"><a class="fa fa-trash"></a></button>
+                </td>
+
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" onclick="SaveServerList();">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div>
+      </div>
+    </div>
+    <!-- Kết thúc sửa ở đây -->
+
+
+  </div>
+<div th:replace="admin/fragments-Admin::footer"></div>
+</div>
+<div th:replace="admin/fragments-Admin::script"></div>
+
+</body>
+</html>
