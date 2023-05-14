@@ -1,22 +1,24 @@
 package com.imusicstudio.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.imusicstudio.entities.Category;
 
-import java.util.List;
+
+
 
 public interface CategoryService {
-
     List<Category> getAllCategory();
-//    List<Category> findAll();
-//    Category save(Category category);
-//    Category getById(Long id);
-//    Category update(Category category);
-//    void deleteById(Long id);
-//    void enableById(Long id);
+
+    public void updateCategory(Category category);
+
+    public void removeCategoryById(int id);
+
+    public Optional<Category> getCategoryById(int id);
 
     Category getCategoryById(Long id);
     void saveCategory(Category category);
-    void updateCategory(Category category);
-    void deleteCategory(Long id);
 
+    void deleteCategory(Long id);
 }

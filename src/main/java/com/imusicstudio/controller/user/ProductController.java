@@ -111,7 +111,7 @@ public class ProductController {
 	    }
 	    
 	    @GetMapping("/shop-details/{id}")
-	    public String getProductById(@PathVariable long id, Model model) {
+	    public String getProductById(@PathVariable Long id, Model model) {
 	        Product product = productService.getProductById(id);
 	        if (product ==null) {
 	            model.addAttribute("errorMessage","Sản phẩm không tồn tại");

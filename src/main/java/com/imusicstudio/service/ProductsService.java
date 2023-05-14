@@ -18,7 +18,22 @@ public interface ProductsService {
     List<Product> getProductsByStatus(int status);
     List<Product> get6NewsestProduct();
 
-    public Product getProductById(long id);
+    List<Product> getAllProductByCategoryId(long id);
+
+//    Optional<Product> getProductById(Long id);
+//
+//    void removeProductById(long id);
+
+    void updateProduct(Product product);
+
+    List<Product> getAllProduct();
+//    Product getProductById(long id);
 
     Page<Product>  getProductsByCategory(long category, int page, Sort sort);
+
+//	Optional<Product> getProductById(Long id);
+
+	Product getProductById(Long id);
+
+	void removeProductById(Long id);
 }

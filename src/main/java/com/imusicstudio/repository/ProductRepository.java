@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import com.imusicstudio.entities.Product;
 
 
-public interface ProductRepository extends JpaRepository<Product,String> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 
 	public Page<Product> findProductByProductNameContaining(String name, Pageable pageable);
 
@@ -24,4 +24,6 @@ public interface ProductRepository extends JpaRepository<Product,String> {
 	public List<Product> findFirst6ByOrderByIdDesc();
 
     Product findById(long Id);
+    
+    List<Product> findAllByCategory_Id(long id);
 }
