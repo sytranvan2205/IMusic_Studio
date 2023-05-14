@@ -1,5 +1,6 @@
 package com.imusicstudio.controller.user;
 
+import com.imusicstudio.entities.CartItem;
 import com.imusicstudio.entities.Product;
 import com.imusicstudio.entities.ShoppingCart;
 import com.imusicstudio.entities.User;
@@ -12,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.Base64;
+import java.util.List;
 
 @Controller
 public class CartController {
@@ -25,7 +28,7 @@ public class CartController {
     private ProductServices productServices;
 
     @GetMapping("/shoping-cart")
-    public String cart(Model model, Principal principal){
+    public String cart(Model model, Principal principal, HttpSession session){
         if (principal ==null){
                 return "redirect:/login"; // hoặc chuyển hướng đến trang đăng nhập
         }
@@ -38,7 +41,10 @@ public class CartController {
         model.addAttribute("shoppingcart",shoppingCart);
         if (shoppingCart == null || shoppingCart.getCartItems().size() == 0){
             model.addAttribute("check", "Không có sản phẩm nào trong giỏ hàng");
+
         }
+        session.setAttribute("totalItems",shoppingCart.getTotalItems());
+        model.addAttribute("subTotal",shoppingCart.getTotalPrices());
         return "shoping-cart";
     }
 
@@ -61,6 +67,26 @@ public class CartController {
         return "redirect:"+request.getHeader("Referer");
 //    return "redirect:/";
     }
+//    @PostMapping("/update-cart")
+//    public String updateCart(@RequestParam("id") Long cartItemId, Principal principal) {
+//
+//            User user = userServices.findByUserName(principal.getName());
+//            ShoppingCart cart = user.getShoppingCart();
+//            List<CartItem> cartItems = (List<CartItem>) cart.getCartItems();
+//            CartItem cartItem = cartItems.stream().filter(item -> item.getId().equals(cartItemId)).findFirst().orElse(null);
+//
+//            if (cartItem != null) {
+//            int quantity = cartItem.getQuantity();
+//            cartItem.setQuantity(quantity + 1);
+//            double totalPrice = cartItem.getProduct().getProductPrice() * cartItem.getQuantity();
+//            cartItem.setTotalPrice(totalPrice);
+//            shoppingCartServices.saveCartItem(cartItem);
+//            cart.setTotalItems(cart.getTotalItems() + 1);
+//            cart.setTotalPrices(cart.getTotalPrices() + cartItem.getProduct().getProductPrice());
+//            shoppingCartServices.saveShoppingCart(cart);
+//        }
+//        return "redirect:/cart";
+//    }
 
     @RequestMapping(value = "/update-cart", method = RequestMethod.POST, params = "action=update")
     public String updateCart(@RequestParam("quantity") int quantity,

@@ -10,6 +10,8 @@
 'use strict';
 
 (function ($) {
+    // Lắng nghe sự kiện nhấn nút tăng hoặc giảm số lượng sản phẩm
+
 
     /*------------------
         Preloader
@@ -202,23 +204,119 @@
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
-    proQty.prepend('<span class="dec qtybtn">-</span>');
-    proQty.append('<span class="inc qtybtn">+</span>');
-    proQty.on('click', '.qtybtn', function () {
+    // var proQty = $('.pro-qty');
+    // proQty.prepend('<span class="dec qtybtn">-</span>');
+    // proQty.append('<span class="inc qtybtn">+</span>');
+    // proQty.on('click', '.qtybtn', function () {
+    //     var $button = $(this);
+    //     var oldValue = $button.parent().find('input').val();
+    //     if ($button.hasClass('inc')) {
+    //         var newVal = parseFloat(oldValue) + 1;
+    //     } else {
+    //         // Don't allow decrementing below zero
+    //         if (oldValue > 0) {
+    //             var newVal = parseFloat(oldValue) - 1;
+    //         } else {
+    //             newVal = 0;
+    //         }
+    //     }
+    //     $button.parent().find('input').val(newVal);
+    //
+    // });
+
+
+    var qtyInputs = $('[data-cart-item] input[type="number"]');
+
+    // qtyInputs.each(function() {
+    //     var quantity = $(this).val();
+    //     var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+    //     var totalPrice = quantity * price;
+    //     $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
+    // });
+
+    // qtyInputs.parent().prepend('<span class="dec qtybtn">-</span>');
+    // qtyInputs.parent().append('<span class="inc qtybtn">+</span>');
+
+    qtyInputs.on('input', function() {
+        var quantity = $(this).val();
+        var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+        var totalPrice = quantity * price;
+        $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
+    });
+
+    qtyInputs.on('click', '.qtybtn', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
+        var quantity = newVal;
+        var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+        var totalPrice = quantity * price;
+        $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
         $button.parent().find('input').val(newVal);
     });
+
+
+
+
+    // var qtyInputs = $('.pro-qty input[type="number"]');
+    //
+    // qtyInputs.each(function() {
+    //     var quantity = $(this).val();
+    //     var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+    //     var totalPrice = quantity * price;
+    //     $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
+    // });
+    //
+    // qtyInputs.parent().prepend('<span class="dec qtybtn">-</span>');
+    // qtyInputs.parent().append('<span class="inc qtybtn">+</span>');
+    //
+    // qtyInputs.on('input', function() {
+    //     var quantity = $(this).val();
+    //     var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+    //     var totalPrice = quantity * price;
+    //     $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
+    // });
+    //
+    // qtyInputs.on('click', '.qtybtn', function () {
+    //     var $button = $(this);
+    //     var oldValue = $button.parent().find('input').val();
+    //     if ($button.hasClass('inc')) {
+    //         var newVal = parseFloat(oldValue) + 1;
+    //     } else {
+    //         if (oldValue > 1) {
+    //             var newVal = parseFloat(oldValue) - 1;
+    //         } else {
+    //             newVal = 1;
+    //         }
+    //     }
+    //     var quantity = newVal;
+    //     var price = $(this).closest('tr').find('.shoping__cart__price').text().replace(/\D/g, '');
+    //     var totalPrice = quantity * price;
+    //     $(this).closest('tr').find('.shoping__cart__total').text(totalPrice.toLocaleString('vi-VN') + ' VNĐ');
+    //     $button.parent().find('input').val(newVal);
+    // });
+
+
+
+
+    function confirmDeleteCartItem(form) {
+        var quantity = $(form).find('.pro-qty input[type="number"]').val();
+        if (quantity == 0) {
+            if (confirm('Bạn có muốn xóa sản phẩm này không?')) {
+                $(form).submit();
+            }
+        } else {
+            $(form).submit();
+        }
+    }
+
 
 })(jQuery);

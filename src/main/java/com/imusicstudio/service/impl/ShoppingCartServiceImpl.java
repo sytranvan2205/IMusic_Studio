@@ -107,6 +107,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartServices {
         return shoppingCartRepository.save(cart);
     }
 
+    @Override
+    public ShoppingCart saveCartItem(CartItem cartItem) {
+        return cartItemRepository.save(cartItem).getCart();
+    }
+
+    @Override
+    public ShoppingCart saveShoppingCart(ShoppingCart shoppingCart) {
+        return shoppingCartRepository.save(shoppingCart);
+    }
+
     //Tìm vật phẩm trong giỏ hàng
 private CartItem findCartItem(Set<CartItem> cartItems,Long productId){
         //nếu giỏ hàng rỗng thì trả về null
