@@ -111,7 +111,7 @@
                         <ul>
                             <li>Tổng tiền sản phẩm<span th:text="${subTotal}+' VNĐ'" > </span></li>
                             <li>Phí vận chuyển <span>30.000 VNĐ</span> </li>
-                            <li>Tổng tiền thanh toán <span th:text="${subTotal + 30000 }+' VNĐ'"></span></li>
+                            <li>Tổng tiền thanh toán <span th:text="${subTotal +30000}==30000?'':${subTotal +30000}+' VNĐ'"></span></li>
                         </ul>
                         <a th:href="@{/checkout}" class="primary-btn">TIẾN HÀNH ĐẶT HÀNG</a>
                     </div>
