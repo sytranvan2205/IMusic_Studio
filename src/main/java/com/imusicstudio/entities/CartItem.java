@@ -1,7 +1,6 @@
 package com.imusicstudio.entities;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class CartItem {
 	private double totalPrice;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", referencedColumnName = "id")
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

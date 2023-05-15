@@ -130,7 +130,7 @@
                                 <h4>Các sản phẩm mới nhất</h4>
                                 <div class="latest-product__slider owl-carousel" >
                                     <div class="latest-product__slider__item" >
-                                        <a href="#" class="latest-product__item" th:each="product : ${productsNew1}">
+                                        <a th:href="@{/shop-details/{id}(id=${product.id})}" class="latest-product__item" th:each="product : ${productsNew1}">
                                             <div class="latest-product__item__pic">
                                                 <img th:src="${product.productImage}" >
                                             </div>
@@ -141,7 +141,7 @@
                                         </a>
                                     </div>
                                     <div class="latest-product__slider__item" >
-                                        <a href="#" class="latest-product__item" th:each="product : ${productsNew2}">
+                                        <a th:href="@{/shop-details/{id}(id=${product.id})}" class="latest-product__item" th:each="product : ${productsNew2}">
                                             <div class="latest-product__item__pic">
                                                 <img th:src="${product.productImage}" >
                                             </div>
@@ -299,12 +299,12 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6" th:each="product : ${products}">
                             <div class="card mb-4 shadow-sm" >
-                                <a th:href="@{/shop-details}" >
+                                <a th:href="@{/shop-details/{id}(id=${product.id})}" >
                                     <img class="product__item__pic set-bg"  th:src="${product.productImage}">
 
                                 </a>
                                 <div class="product__item__text">
-                                    <h6><a href="#" th:text="${product.productName}"></a></h6>
+                                    <h6><a th:href="@{/shop-details/{id}(id=${product.id})}" th:text="${product.productName}"></a></h6>
                                     <h5  ><span th:text="${product.productPrice}"/> VND</h5>
                                 </div>
                             </div>

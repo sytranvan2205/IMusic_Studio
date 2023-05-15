@@ -237,12 +237,12 @@
         <div class="row featured__filter" >
           <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar" th:each="product : ${products}">
             <div  class="featured__item">
-              <a th:href="@{/shop-details}" >
+              <a th:href="@{/shop-details/{id}(id=${product.id})}" >
                 <img class="featured__item__pic set-bg"  th:src="${product.productImage}">
               </a>
 
               <div class="featured__item__text">
-                <h6 th:text="${product.productName}"><a th:href="@{/shop-details}"></a></h6>
+                <h6 th:text="${product.productName}"><a th:href="@{/shop-details/{id}(id=${product.id})}"></a></h6>
                 <h5 th:text="${product.productPrice}">VND</h5>
               </div>
             </div>

@@ -52,8 +52,6 @@ public class User extends BaseEntity {
 //	private Set<SecureToken> tokens;
 //	private boolean accountVerified;
 
-	@OneToOne(mappedBy = "user")
-	private Cart cart;
 
 	public User() {
 		super();
@@ -129,14 +127,6 @@ public class User extends BaseEntity {
 
 	public void setTokens(Set<SecureToken> tokens) {
 		this.tokens = tokens;
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
 	}
 
 	public Collection<Role> getRoles() {

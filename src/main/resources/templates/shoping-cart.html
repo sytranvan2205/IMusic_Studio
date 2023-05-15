@@ -51,8 +51,8 @@
 
                                 <tr th:each="cartItem: ${shoppingcart.cartItems}">
                                     <td class="shoping__cart__item">
-                                        <img th:src="${cartItem.product.productImage}" alt="" width="150" height="150">
-                                        <h5 th:text="${cartItem.product.productName}"></h5>
+                                        <img th:src="${cartItem.getProduct().productImage}" alt="" width="150" height="150">
+                                        <h5 th:text="${cartItem.getProduct().productName}"></h5>
                                     </td>
                                     <td class="shoping__cart__price" th:text="${cartItem.product.productPrice}+' VNĐ'"></td>
 
