@@ -6,7 +6,128 @@
 </head>
 
 <body>
-	<div th:replace="fragments::header"></div>
+<div th:replace="fragments::header" ></div>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/pexels-pixabay-159355.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>THÔNG TIN SẢN PHẨM</h2>
+                        <div class="breadcrumb__option">
+                            <a href="index.html">TRANG CHỦ</a>
+                      
+                            <span>THÔNG TIN SẢN PHẨM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+
+<!--            Hiển thị chi tiết sản phẫm-->
+
+            <form th:action="@{/add-to-cart}" method="post">
+                <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <!--                     Hiển thị hình ảnh lớn-->
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             th:src="${product.productImage}" alt="Image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text" th:href="@{/find-product/{id}(id=${product.id})}">
+                    <!--                    Tên sản phẩm-->
+                    <h3 th:text="${product.productName}"></h3>
+                    <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span>(18 reviews)</span>
+                    </div>
+                    <!--                      Hiển thị giá của sản phẩm-->
+                    <div class="product__details__price" th:text="${product.productPrice}+' VNĐ'"> </div>
+                    <p th:text="${product.productDesc}"> </p>
+                    <div class="product__details__quantity">
+                        <div class="quantity" >
+                            <div class="pro-qty">
+                                <input  value="1" th:action="${product.getQuantity()}">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" th:value="${product.id}" name="id">
+                    <input type="submit" class="primary-btn" value="THÊM VÀO GIỎ HÀNG"></input>
+                    <ul>
+                        <li><b>Số lượng</b> <span>Còn hàng</span></li>
+                        <li><b>Nặng</b> <span>0.5 kg</span></li>
+                    </ul>
+                </div>
+            </div>
+                </div>
+            </form>
+
+<!--            kết thúc chi tiết sản phẩm-->
+
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                               aria-selected="true">Mô tả</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                               aria-selected="false">Thông tin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                               aria-selected="false">Nhận xét <span>(1)</span></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Mô tả sản phẩm</h6>
+
+                                <!--Mô tả của sản phẩm-->
+                                <p th:text="${product.productDesc}"></p>
+                                <!--                                <p>Mô tả về sản phẩm</p>-->
+                                <p>Mô tả chi tiết về sản phẩm</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Thông tin sản phẩm</h6>
+                                <p>Thông tin về sản phẩm</p>
+                                <p>Thông tin về sản phẩm aaaa.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Nhận xét</h6>
+                                <p>Nhận xét về sản phẩm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
 
 
 
